@@ -22,11 +22,12 @@ import { PedidosStockComponent } from './components/contenido/gestion/pedidos-st
 import { SeguimientoComponent } from './components/contenido/pedidos/seguimiento/seguimiento.component';
 import { RealizadosLlegadosComponent } from './components/contenido/pedidos/realizados-llegados/realizados-llegados.component';
 import { HomeComponent } from './components/contenido/home/home.component';
+import { ContenidoTiendaComponent } from './components/contenido/tienda/contenido-tienda/contenido-tienda.component';
 
 
 
 //servicios
-
+import { PrendaService } from './services/prenda.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,14 +45,15 @@ import { HomeComponent } from './components/contenido/home/home.component';
     PedidosStockComponent,
     SeguimientoComponent,
     RealizadosLlegadosComponent,
-    HomeComponent
+    HomeComponent,
+    ContenidoTiendaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [PrendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
