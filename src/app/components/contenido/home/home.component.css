@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: 100;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.parallax {
+    background: url('../../../../assets/images/oferta.jpg') repeat fixed 100%;
+    background-size: cover;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.parallax-1 {
+    background: url('../../../../assets/images/hombre.jpg') repeat fixed 100%;
+    background-size: cover;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.parallax-2 {
+    background: url('../../../../assets/images/mujer.jpg') repeat fixed 100%;
+    background-size: cover;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.parallax-inner {
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+h3 {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 160px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', serif;
+}
