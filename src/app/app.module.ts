@@ -20,10 +20,9 @@ import { MenuTiendaComponent } from './components/contenido/tienda/menu-tienda/m
 import { PedidosGestionComponent } from './components/contenido/gestion/pedidos-gestion/pedidos-gestion.component';
 import { PedidosStockComponent } from './components/contenido/gestion/pedidos-stock/pedidos-stock.component';
 import { SeguimientoComponent } from './components/contenido/pedidos/seguimiento/seguimiento.component';
-import { RealizadosLlegadosComponent } from './components/contenido/pedidos/realizados-llegados/realizados-llegados.component';
 import { HomeComponent } from './components/contenido/home/home.component';
 import { ContenidoTiendaComponent } from './components/contenido/tienda/contenido-tienda/contenido-tienda.component';
-
+import { RealizadosLlegadosComponent } from './components/contenido/pedidos/realizados-llegados/realizados-llegados.component';
 
 
 //servicios
@@ -44,9 +43,9 @@ import { PrendaService } from './services/prenda.service';
     PedidosGestionComponent,
     PedidosStockComponent,
     SeguimientoComponent,
-    RealizadosLlegadosComponent,
     HomeComponent,
-    ContenidoTiendaComponent
+    ContenidoTiendaComponent,
+    RealizadosLlegadosComponent
   ],
   imports: [
     BrowserModule,
