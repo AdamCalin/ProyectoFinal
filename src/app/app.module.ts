@@ -27,6 +27,7 @@ import { RealizadosLlegadosComponent } from './components/contenido/pedidos/real
 
 //servicios
 import { PrendaService } from './services/prenda.service';
+import { SeasonComponent } from './components/contenido/home/season/season.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { PrendaService } from './services/prenda.service';
     SeguimientoComponent,
     HomeComponent,
     ContenidoTiendaComponent,
-    RealizadosLlegadosComponent
+    RealizadosLlegadosComponent,
+    SeasonComponent
   ],
   imports: [
     BrowserModule,
