@@ -28,6 +28,7 @@ import { RealizadosLlegadosComponent } from './components/contenido/pedidos/real
 //servicios
 import { PrendaService } from './services/prenda.service';
 import { SeasonComponent } from './components/contenido/home/season/season.component';
+import { ModalModule } from './shared/components/modal/modal.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { SeasonComponent } from './components/contenido/home/season/season.compo
     SeasonComponent
   ],
   imports: [
+    ModalModule,
     BrowserModule,
     AppRoutingModule,
     APP_ROUTING

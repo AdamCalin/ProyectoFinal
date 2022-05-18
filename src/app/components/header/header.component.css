@@ -48,3 +48,11 @@ a {
         width: 100%;
     }
 }
+
+.capa {
+    z-index: 10;
+}
+
+.formu {
+    color: red;
+}
