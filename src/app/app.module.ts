@@ -25,6 +25,9 @@ import { ContenidoTiendaComponent } from './components/contenido/tienda/contenid
 import { RealizadosLlegadosComponent } from './components/contenido/pedidos/realizados-llegados/realizados-llegados.component';
 
 
+//ANIMACIONES
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 //servicios
 import { PrendaService } from './services/prenda.service';
 import { SeasonComponent } from './components/contenido/home/season/season.component';
@@ -54,6 +57,7 @@ import { ModalModule } from './shared/components/modal/modal.module';
     ModalModule,
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     APP_ROUTING
   ],
   providers: [PrendaService],

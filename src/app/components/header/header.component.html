@@ -7,15 +7,15 @@
 
         <div class="d-flex">
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-outline-light dropdown-toggle my-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bi bi-globe2"></i> Idioma
                 </button>
                 <div class="dropdown-menu capa" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Inglés</a>
-                    <a class="dropdown-item" href="#">Español</a>
+                    <a class="dropdown-item" href="#"> <img class="banderas" src="./assets/images/reino-unido.png" alt=""> Inglés -UK-</a>
+                    <a class="dropdown-item" href="#"> <img class="banderas" src="./assets/images/espana.png" alt=""> Español -ES-</a>
                 </div>
             </div>
-            <button class="btn btn-outline-light m-1" (click)="showModal = true">Inicio Sesión</button>
+            <button class="btn btn-outline-light m-1" (click)="showModal = true;">Inicio Sesión</button>
         </div>
 
 
@@ -23,8 +23,6 @@
 </nav>
 <app-menu></app-menu>
 
-<app-modal *ngIf="showModal">
-    <div class="formu" body>
+<app-modal @fade *ngIf="showModal" (open)="setClose($event)">
 
-    </div>
 </app-modal>

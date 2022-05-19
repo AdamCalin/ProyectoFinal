@@ -1,5 +1,104 @@
-<div class="never-modal">
-    <div class="never-modal___wrapper" [ngClass]="position">
-        <ng-content select="[body]"></ng-content>
+<div class="never-modal animated fadeIn">
+    <div class=" never-modal___wrapper " [ngClass]="position ">
+        <!-- <ng-content select="[body] "></ng-content> -->
+        <div class="container-fluid h-100 ">
+            <!-- BOTON CERRAR LOGIN -->
+            <div class="d-flex justify-content-end my-2 ">
+                <button type="button " class="btn-close " id="cerrar" aria-label="Close" (click)="setClose();"></button>
+            </div>
+            <div class="d-flex justify-content-center h-100 ">
+                <div class="user_card ">
+                    <div class="d-flex justify-content-center ">
+                        <div class="brand_logo_container ">
+                            <img src="./assets/images/nvlogo.webp " class="brand_logo " alt="Logo ">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column ">
+                        <div class="menu mt-4 ">
+                            <!-- MENU LOGIN -->
+                            <nav class="navbar navbar-expand-lg navbar-light ">
+                                <div class="collapse navbar-collapse " id="navbarNavAltMarkup ">
+                                    <div class="navbar-nav ">
+                                        <a class="nav-link " (click)="mostrarLogin() ">Inicio Sesion</a>
+                                        <div class="linea"></div>
+                                        <a class="nav-link " (click)="mostrarRegister() ">Registrarse</a>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        <!-- TEMPLATES -->
+                        <div class="d-flex justify-content-center " *ngIf="mostrar; then login else register"></div>
+                        <ng-template #login>
+                            <!-- FORMULARIO INICIO SESION -->
+
+                            <form class="container ">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="lineaTLogin"></div>
+                                    <h6>Inicio Sesion</h6>
+                                </div>
+                                <div class=" input-group mb-3 ">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text "><i class="bi bi-person-fill "></i></span>
+                                    </div>
+                                    <input type="text " name=" " class="form-control input_user " value=" " placeholder="Usuario ">
+                                </div>
+                                <div class="input-group mb-2 ">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text "><i class="bi bi-key-fill "></i></span>
+                                    </div>
+                                    <input type="password " name=" " class="form-control input_pass " value=" " placeholder="Contraseña ">
+                                </div>
+                                <div class="input-group mb-3 hidden ">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text "><i class="bi bi-at "></i></span>
+                                    </div>
+                                    <input type="text " name=" " class="form-control input_user " value=" " placeholder="Email ">
+                                </div>
+                                <div class="d-flex justify-content-center mt-3 login_container ">
+                                    <button type="button " name="button " class="btn login_btn ">Iniciar Sesion</button>
+                                </div>
+                            </form>
+                        </ng-template>
+                        <ng-template #register>
+                            <!-- FORMULARIO REGISTRARSE -->
+                            <form class="container">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="lineaTRegister"></div>
+                                    <h6>Registro</h6>
+                                </div>
+                                <div class="input-group mb-3 ">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text "><i class="bi bi-person-fill "></i></span>
+                                    </div>
+                                    <input type="text " name=" " class="form-control input_user " value=" " placeholder="Usuario ">
+                                </div>
+                                <div class="input-group mb-3 ">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text "><i class="bi bi-at "></i></span>
+                                    </div>
+                                    <input type="text " name=" " class="form-control input_user " value=" " placeholder="Email ">
+                                </div>
+                                <div class="input-group mb-2 ">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text "><i class="bi bi-key-fill "></i></span>
+                                    </div>
+                                    <input type="password " name=" " class="form-control input_pass " value=" " placeholder="Contraseña ">
+                                </div>
+                                <div class="d-flex justify-content-center mt-3 login_container ">
+                                    <button type="button " name="button " class="btn login_btn ">Registrarse</button>
+                                </div>
+                            </form>
+                        </ng-template>
+
+                    </div>
+
+                    <div class="mt-4 ">
+                        <div class="d-flex justify-content-center links ">
+                            <a href="# ">Has olvidado tu contraseña?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
