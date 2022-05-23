@@ -18,4 +18,7 @@ export class ContenidoTiendaComponent implements OnInit {
     console.log(this.prenda);
   }
 
+  // click(color){
+  //   let url = `${this.url}/${color}`
+  // }
 }

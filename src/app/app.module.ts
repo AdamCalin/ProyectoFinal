@@ -32,6 +32,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PrendaService } from './services/prenda.service';
 import { SeasonComponent } from './components/contenido/home/season/season.component';
 import { ModalModule } from './shared/components/modal/modal.module';
+import { ModalAnadirArticuloComponent } from './components/contenido/gestion/pedidos-stock/modal-anadir-articulo/modal-anadir-articulo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { ModalModule } from './shared/components/modal/modal.module';
     HomeComponent,
     ContenidoTiendaComponent,
     RealizadosLlegadosComponent,
-    SeasonComponent
+    SeasonComponent,
+    ModalAnadirArticuloComponent
   ],
   imports: [
     ModalModule,

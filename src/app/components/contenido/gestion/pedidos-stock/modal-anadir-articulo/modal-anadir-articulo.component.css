@@ -1,0 +1,29 @@
+.never-modal {
+    background-color: rgba(124, 122, 122, 0.5);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1025;
+}
+
+.right {
+    border-radius: 0.25rem;
+    background-color: #bbbbbb;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .5);
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
