@@ -5,8 +5,8 @@
             <div class="d-flex justify-content-end my-2 ">
                 <button type="button " class="btn-close " id="cerrar" aria-label="Close" (click)="setClose();"></button>
             </div>
-            <section class="">
-                <h1 class="title">Añadir Articulo</h1>
+            <section class="container">
+                <h1 class="title"><img class="tamano" src="./assets/images/LOGONEVERLOGIN.png" alt="">Añadir Articulo</h1>
                 <form action="" class="d-flex justify-content-center">
                     <div class="m-1">
                         <div class="form-floating mb-3">
@@ -23,13 +23,19 @@
                         </div>
                         <div class="">
                             <label for="talla">Talla</label>
-                            <select name="" id="talla" class="my-2">
+                            <select name="" id="talla" class="form-select form-select-sm my-2">
+                                <option value="" disabled selected>--Elige Talla--</option>
                                 <option value="S">S</option>
                                 <option value="M">M</option>
                                 <option value="L">L</option>
                             </select>
 
                         </div>
+                        <div class="form-floating mb-3">
+                            <label for="precio">Precio </label>
+                            <input class="form-control" type="number" id="precio" placeholder="Precio" aria-label="default input example">
+                        </div>
+                        <input class="form-control" type="file" id="formFile">
                     </div>
                     <div class="m-1">
                         <div class="form-floating mb-3">
@@ -45,32 +51,23 @@
                             <label for="ancho">Ancho </label>
                         </div>
 
-                        <label for="color">Color</label>
-                        <select name="" id="color" class="my-2">
+                        <div class="">
+                            <label for="color">Color</label>
+                            <select name="" id="color" class="form-select form-select-sm my-2">
+                                <option value="" disabled selected>--Elige Color--</option>
                           <option value="">Negro</option>
                           <option value="">Blanco</option>
                           <option value="">Gris</option>
                           <option value="">Azul Oscuro</option>
                           <option value="">Verde Oliva</option>
                          </select>
-                    </div>
-                    <div class="m-1">
-                        <div class="form-floating mb-3">
-                            <label for="precio">Precio </label>
-                            <input class="form-control" type="number" id="precio" placeholder="Precio" aria-label="default input example">
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" type="number" id="registro" placeholder="Precio" aria-label="default input example">
                             <label for="registro">Registro</label>
                         </div>
-                        <div class="form-floating">
-                            <input class="form-control" type="file" id="formFile">
-                            <label for="formFile" class="form-label">Elige una imagen </label>
-                        </div>
                         <input type="button" value="Añadir" class="btn btn-outline-dark m-2">
                     </div>
-
-
                 </form>
             </section>
         </div>
