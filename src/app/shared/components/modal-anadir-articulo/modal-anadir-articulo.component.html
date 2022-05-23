@@ -1,0 +1,78 @@
+<div class="never-modal ">
+    <div class=" never-modal___wrapper " [ngClass]="position ">
+        <div class="container-fluid h-100 ">
+            <!-- BOTON CERRAR LOGIN -->
+            <div class="d-flex justify-content-end my-2 ">
+                <button type="button " class="btn-close " id="cerrar" aria-label="Close" (click)="setClose();"></button>
+            </div>
+            <section class="">
+                <h1 class="title">Añadir Articulo</h1>
+                <form action="" class="d-flex justify-content-center">
+                    <div class="m-1">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" id="descripcion" placeholder="Descripcion" aria-label="default input example">
+                            <label for="descripcion">Descripcion </label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" id="fabricante" placeholder="Fabricante" aria-label="default input example">
+                            <label for="fabricante">Fabricante </label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="number" id="peso" placeholder="Peso" aria-label="default input example">
+                            <label for="peso">Peso </label>
+                        </div>
+                        <div class="">
+                            <label for="talla">Talla</label>
+                            <select name="" id="talla" class="my-2">
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="m-1">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="number" id="alto" placeholder="Alto" aria-label="default input example">
+                            <label for="alto">Alto </label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="number" id="largo" placeholder="Largo" aria-label="default input example">
+                            <label for="largo">Largo </label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="number" id="ancho" placeholder="Ancho" aria-label="default input example">
+                            <label for="ancho">Ancho </label>
+                        </div>
+
+                        <label for="color">Color</label>
+                        <select name="" id="color" class="my-2">
+                          <option value="">Negro</option>
+                          <option value="">Blanco</option>
+                          <option value="">Gris</option>
+                          <option value="">Azul Oscuro</option>
+                          <option value="">Verde Oliva</option>
+                         </select>
+                    </div>
+                    <div class="m-1">
+                        <div class="form-floating mb-3">
+                            <label for="precio">Precio </label>
+                            <input class="form-control" type="number" id="precio" placeholder="Precio" aria-label="default input example">
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="number" id="registro" placeholder="Precio" aria-label="default input example">
+                            <label for="registro">Registro</label>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" type="file" id="formFile">
+                            <label for="formFile" class="form-label">Elige una imagen </label>
+                        </div>
+                        <input type="button" value="Añadir" class="btn btn-outline-dark m-2">
+                    </div>
+
+
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

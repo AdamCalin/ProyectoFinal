@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, animate, transition, style, state } from '@angular/animations';
-import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-header',

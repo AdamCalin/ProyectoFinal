@@ -8,16 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionComponent implements OnInit {
 
-  public showModal: boolean = false;
-  public fadeOut: boolean = false;
-  
-  constructor() {
+   constructor(){
+
    }
-
-  ngOnInit() {
-  }
-  setClose($event :any) {
-    this.showModal = false;
-  }
-
+   ngOnInit(): void {
+       
+   }
 }

@@ -13,9 +13,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TiendaComponent } from './components/contenido/tienda/tienda.component';
 import { HeaderTiendaComponent } from './components/contenido/tienda/header-tienda/header-tienda.component';
 import { PedidosComponent } from './components/contenido/pedidos/pedidos.component';
-import { HeaderPedidosComponent } from './components/contenido/Pedidos/header-pedidos/header-pedidos.component';
+import { HeaderPedidosComponent } from './components/contenido/pedidos/header-pedidos/header-pedidos.component';
 import { GestionComponent } from './components/contenido/gestion/gestion.component';
-import { HeaderGestionComponent } from './components/contenido/Gestion/header-gestion/header-gestion.component';
+import { HeaderGestionComponent } from './components/contenido/gestion/header-gestion/header-gestion.component';
 import { MenuTiendaComponent } from './components/contenido/tienda/menu-tienda/menu-tienda.component';
 import { PedidosGestionComponent } from './components/contenido/gestion/pedidos-gestion/pedidos-gestion.component';
 import { PedidosStockComponent } from './components/contenido/gestion/pedidos-stock/pedidos-stock.component';
@@ -32,7 +32,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PrendaService } from './services/prenda.service';
 import { SeasonComponent } from './components/contenido/home/season/season.component';
 import { ModalModule } from './shared/components/modal/modal.module';
-import { ModalAnadirArticuloComponent } from './components/contenido/gestion/pedidos-stock/modal-anadir-articulo/modal-anadir-articulo.component';
+import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/modalAnadir.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,11 +53,11 @@ import { ModalAnadirArticuloComponent } from './components/contenido/gestion/ped
     HomeComponent,
     ContenidoTiendaComponent,
     RealizadosLlegadosComponent,
-    SeasonComponent,
-    ModalAnadirArticuloComponent
+    SeasonComponent
   ],
   imports: [
     ModalModule,
+    ModalModuleArticulo,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

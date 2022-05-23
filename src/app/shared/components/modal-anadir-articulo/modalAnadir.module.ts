@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalAnadirArticuloComponent } from './modal-anadir-articulo.component';
+
 @NgModule({
   declarations: [ ModalAnadirArticuloComponent],
   imports: [
@@ -8,4 +9,4 @@ import { ModalAnadirArticuloComponent } from './modal-anadir-articulo.component'
   ],
   exports : [ ModalAnadirArticuloComponent ]
 })
-export class ModalModule { }
+export class ModalModuleArticulo { }

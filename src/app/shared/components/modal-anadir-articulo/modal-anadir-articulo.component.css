@@ -19,11 +19,3 @@
     height: 50%;
     box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .5);
 }
-
-.dot {
-    height: 25px;
-    width: 25px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-}
