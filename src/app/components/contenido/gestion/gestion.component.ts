@@ -16,7 +16,7 @@ export class GestionComponent implements OnInit {
 
   ngOnInit() {
   }
-  setClose($event) {
+  setClose($event :any) {
     this.showModal = false;
   }
 

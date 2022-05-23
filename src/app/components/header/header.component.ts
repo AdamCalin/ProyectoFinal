@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-  setClose($event) {
+  setClose($event: any) {
     this.showModal = false;
   }
   
