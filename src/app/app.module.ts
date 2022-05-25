@@ -33,7 +33,8 @@ import { PrendaService } from './services/prenda.service';
 import { SeasonComponent } from './components/contenido/home/season/season.component';
 import { ModalModule } from './shared/components/modal/modal.module';
 import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/modalAnadir.module';
-
+import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarrito.module';
+import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,8 @@ import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/m
   imports: [
     ModalModule,
     ModalModuleArticulo,
+    ModalModuleCarrito,
+    ModalModulePerfil,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -1,0 +1,29 @@
+<div class="never-modal ">
+    <div class=" never-modal___wrapper " [ngClass]="position ">
+        <!-- <ng-content select="[body] "></ng-content> -->
+
+        <div class="cabecera">
+            <div class="d-flex justify-content-end my-2 ">
+                <button type="button " class="btn-close " id="cerrar" aria-label="Close" (click)="setClose();"></button>
+            </div>
+        </div>
+        <div class="container-fluid h-100 ">
+            <!-- BOTON CERRAR LOGIN -->
+
+
+            <div class="circle"></div>
+
+            <div class="container containerTexto">
+                <h1>--USUARIO--</h1>
+                <h1>--EMAIL--</h1>
+
+                <button class="btn btn-outline-dark" routerLinkActive="active">
+                    <i class="bi bi-person-fill"></i>Pedidos
+                </button>
+                <button class="btn btn-outline-danger mx-3">
+                    Cerrar Sesion
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

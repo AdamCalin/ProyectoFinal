@@ -24,16 +24,24 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <a class="nav-link link-dark position-relative" href="#"><i class="bi bi-cart2"></i>
+                <button class="nav-link link-dark position-relative" href="#" (click)="showModal = true;"><i class="bi bi-cart2"></i>
                       <span class="position-absolute top-30 start-95 translate-middle badge rounded-pill bg-danger">
                         3
                         <span class="visually-hidden">unread messages</span>
                     </span>
-                </a>
+                </button>
 
-                <a class="nav-link link-dark" href="#"><i class="bi bi-person"></i></a>
+                <button class="nav-link link-dark" href="#" (click)="showModal2 = true;"><i class="bi bi-person"></i></button>
                 <!-- VENTANA CON AJUSTES USUARIOS BASICOS -->
             </div>
         </div>
     </div>
 </nav>
+
+<app-modal-carrito @fade *ngIf="showModal" (open)="setClose($event)">
+
+</app-modal-carrito>
+
+<app-modal-perfil @fade *ngIf="showModal2" (open)="setClose($event)">
+
+</app-modal-perfil>

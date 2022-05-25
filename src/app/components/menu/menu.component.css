@@ -30,6 +30,11 @@ a {
     }
 }
 
+button {
+    background: transparent;
+    border: transparent;
+}
+
 .u-sticky-top {
     position: sticky;
     top: 0;
