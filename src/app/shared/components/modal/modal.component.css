@@ -56,10 +56,6 @@
     border: 2px solid white;
 }
 
-.form_container {
-    margin-top: 100px;
-}
-
 .login_btn {
     width: 100%;
     background: #555555 !important;
@@ -118,4 +114,23 @@
 
 .hidden {
     visibility: hidden;
+}
+
+@media screen and (min-width:320px) and (max-width:425px) {
+    .right {
+        width: 90%;
+        height: 60%;
+    }
+    .user_card {
+        width: 90%;
+        height: 80%;
+    }
+    .brand_logo_container {
+        width: 130px;
+        height: 130px;
+    }
+    .brand_logo {
+        width: 110px;
+        height: 110px;
+    }
 }
