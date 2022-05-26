@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, animate, transition, style, state } from '@angular/animations';
+import { ArticulosService } from '../../services/articulos/articulos.service';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
   public showModal: boolean = false;
   public fadeOut: boolean = false;
   
-  constructor() {
+  constructor(private articulosService : ArticulosService) {
    }
 
   ngOnInit() {
@@ -31,5 +32,22 @@ export class HeaderComponent implements OnInit {
   setClose($event: any) {
     this.showModal = false;
   }
-  
+  login($event : any){
+    console.log($event);
+    
+    this.articulosService.login($event).subscribe( res =>{
+      console.log(res);
+      if(res.status == 200){
+        
+      }
+      else{
+        
+      }
+    },
+    err =>
+    {
+      console.log(err.error)
+    }
+    )
+  }
 }

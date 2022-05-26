@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ArticulosService } from '../../../services/articulos/articulos.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,14 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   
-  constructor (){
-  
+  constructor (private articulosService: ArticulosService){
+    
   }
   
   ngOnInit(): void {
+      let articulos = this.articulosService.getArticulos().subscribe( res => { 
+        console.log(res);
+      });
       
   }
 }

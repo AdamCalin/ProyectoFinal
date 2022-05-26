@@ -23,6 +23,6 @@
 </nav>
 <app-menu></app-menu>
 
-<app-modal @fade *ngIf="showModal" (open)="setClose($event)">
+<app-modal @fade *ngIf="showModal" (open)="setClose($event)" (login)="login($event)">
 
 </app-modal>

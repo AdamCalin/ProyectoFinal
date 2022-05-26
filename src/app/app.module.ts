@@ -35,6 +35,8 @@ import { ModalModule } from './shared/components/modal/modal.module';
 import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/modalAnadir.module';
 import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarrito.module';
 import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +66,9 @@ import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     APP_ROUTING
   ],
   providers: [PrendaService],

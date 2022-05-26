@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
@@ -11,12 +11,18 @@ export class ModalComponent implements OnInit {
   @Input() position: string = 'right'; 
 
   @Output() open = new EventEmitter<boolean>();
+
+  @Output() login = new EventEmitter<any>();
  
   public mostrar: boolean = true;
   
+  formLogin : FormGroup;
 
-
-  constructor() { }
+  constructor(private formBuilder : FormBuilder) {
+    this.formLogin = this.formBuilder.group({
+      user: new FormControl(''),
+    pass : new FormControl('')
+  }) }
  
   setClose() {
     let value = false;
@@ -32,5 +38,9 @@ export class ModalComponent implements OnInit {
   mostrarRegister(){
     this.mostrar = false;
 
+  }
+
+  dologin(){
+    this.login.emit(this.formLogin.value);
   }
 }
