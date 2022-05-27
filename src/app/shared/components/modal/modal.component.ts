@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
@@ -20,8 +20,8 @@ export class ModalComponent implements OnInit {
 
   constructor(private formBuilder : FormBuilder) {
     this.formLogin = this.formBuilder.group({
-      user: new FormControl(''),
-    pass : new FormControl('')
+      user: new FormControl('', Validators.required),
+    pass : new FormControl('', Validators.required)
   }) }
  
   setClose() {

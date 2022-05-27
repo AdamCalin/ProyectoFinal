@@ -18,6 +18,8 @@ import { trigger, animate, transition, style, state } from '@angular/animations'
 })
 export class MenuComponent implements OnInit {
 
+   @Input() datosUsuario : any;
+
   public showModal: boolean = false;
   public showModal2 :boolean = false;
   public fadeOut: boolean = false;
@@ -26,7 +28,14 @@ export class MenuComponent implements OnInit {
    }
 
   ngOnInit() {
+    
+    console.log(this.datosUsuario);
+    
   }
+
+  
+
+
   setClose($event: any) {
     this.showModal = false;
     this.showModal2 = false;

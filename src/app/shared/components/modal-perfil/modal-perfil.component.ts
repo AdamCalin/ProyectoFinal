@@ -8,6 +8,7 @@ import { Component, OnInit,   Input, Output, EventEmitter} from '@angular/core';
 export class ModalPerfilComponent implements OnInit {
 
   @Input() position: string = 'right'; 
+  @Input() datosUsuario: any;
 
   @Output() open = new EventEmitter<boolean>();
  

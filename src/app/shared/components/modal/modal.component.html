@@ -40,13 +40,13 @@
                                     <div class="input-group-append ">
                                         <span class="input-group-text "><i class="bi bi-person-fill "></i></span>
                                     </div>
-                                    <input type="text" class="form-control input_user " formControlName="user" placeholder=" Usuario ">
+                                    <input type="text" class="form-control input_user " formControlName="user" placeholder="Usuario">
                                 </div>
                                 <div class="input-group mb-2 ">
                                     <div class="input-group-append ">
                                         <span class="input-group-text "><i class="bi bi-key-fill "></i></span>
                                     </div>
-                                    <input type="password" class="form-control input_pass" formControlName="pass" placeholder="Contraseña ">
+                                    <input type="password" class="form-control input_pass" formControlName="pass" placeholder="********">
                                 </div>
                                 <div class="input-group mb-3 hidden ">
                                     <div class="input-group-append ">
@@ -55,7 +55,7 @@
                                     <input type="text " class="form-control input_user " value=" " placeholder="Email ">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 login_container">
-                                    <button name="button" type="button" (click)="dologin()" class="btn login_btn ">Iniciar Sesion</button>
+                                    <button name="button" type="button" (click)="dologin()" (keyup.enter)="dologin()" class="btn login_btn ">Iniciar Sesion</button>
                                 </div>
                             </form>
                         </ng-template>

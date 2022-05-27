@@ -42,6 +42,6 @@
 
 </app-modal-carrito>
 
-<app-modal-perfil @fade *ngIf="showModal2" (open)="setClose($event)">
+<app-modal-perfil [datosUsuario]="datosUsuario" @fade *ngIf="showModal2" (open)="setClose($event)">
 
 </app-modal-perfil>

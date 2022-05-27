@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,11 @@ export class ArticulosService {
 
    }
 
-  
+   headers() {
+     return new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+     })
+  }
    getArticulos(): Observable<any>{
     return this.http.get(`${this.url}/articulos`); 
   }
@@ -21,7 +25,10 @@ export class ArticulosService {
     return this.http.post(`${this.url}/cuentas/login`, body, {observe:'response'});
   }
 
-  // usuario():Observable<any>{
-  //   retun this.http.get(`${this.url}/usuarioLogin`);
-  // }
+  usuario(id_usuario : any):Observable<any>{
+    let headers = this.headers();
+    
+    return this.http.get(`${this.url}/usuarios/${id_usuario}`, {headers});
+  }
+
 }

@@ -15,13 +15,14 @@
                     <a class="dropdown-item" href="#"> <img class="banderas" src="./assets/images/espana.png" alt=""> Español -ES-</a>
                 </div>
             </div>
-            <button class="btn btn-outline-light m-1" (click)="showModal = true;">Inicio Sesión</button>
+            <button class="btn btn-outline-light m-1" (click)="showModal = true;" *ngIf="mostrarBoton">Inicio Sesión</button>
+            <button class="btn btn-outline-danger m-1" (click)="logout($event)" *ngIf="!mostrarBoton">Cerrar Sesión</button>
         </div>
 
 
     </div>
 </nav>
-<app-menu></app-menu>
+<app-menu [datosUsuario]="datosUsuario"></app-menu>
 
 <app-modal @fade *ngIf="showModal" (open)="setClose($event)" (login)="login($event)">
 
