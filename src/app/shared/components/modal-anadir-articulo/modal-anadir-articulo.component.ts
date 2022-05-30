@@ -23,8 +23,20 @@ export class ModalAnadirArticuloComponent implements OnInit {
 
    constructor(private formBuilder : FormBuilder,
     private articulosService : ArticulosService) {
-    this.formAnadirArticulo = new FormGroup({});
-  this.crearFormulario();
+      this.formAnadirArticulo = this.formBuilder.group({
+        descripcion: new FormControl('', Validators.required),
+      fabricante : new FormControl('', Validators.required),
+      peso : new FormControl(''),
+      largo : new FormControl(''),
+      ancho : new FormControl(''),
+      alto : new FormControl(''),
+      precio : new FormControl('', Validators.required),
+      talla : new FormControl('', Validators.required),
+      color : new FormControl('', Validators.required),
+      n_registro : new FormControl(''),
+      imagen : new FormControl(''),
+      sexo : new FormControl('', Validators.required)
+    })
      }
 
   // cerrer modulo
@@ -36,28 +48,11 @@ export class ModalAnadirArticuloComponent implements OnInit {
     
   }
 
-  crearFormulario(imagen?:string | ''){
-    this.formAnadirArticulo = this.formBuilder.group({
-      descripcion: new FormControl('', Validators.required),
-    fabricante : new FormControl('', Validators.required),
-    peso : new FormControl(''),
-    largo : new FormControl(''),
-    ancho : new FormControl(''),
-    alto : new FormControl(''),
-    precio : new FormControl('', Validators.required),
-    talla : new FormControl('', Validators.required),
-    color : new FormControl('', Validators.required),
-    n_registro : new FormControl(''),
-    imagen : new FormControl(imagen),
-    sexo : new FormControl('', Validators.required)
-  })
-  }
 
   base64($event: Event){
   const target = $event.target as HTMLInputElement;
 
   const file :File = (target.files as FileList)[0];
-    console.log(file);
     
     this.convertToBase64(file)
   }
@@ -71,10 +66,7 @@ export class ModalAnadirArticuloComponent implements OnInit {
         console.log(d);
         this.laImagen = d;
         this.base64code = d;
-        this.crearFormulario(d);
-        console.log(this.formAnadirArticulo.value);
-        
-        
+        this.formAnadirArticulo.value.imagen = d;  
       })
 
   }
@@ -93,11 +85,13 @@ export class ModalAnadirArticuloComponent implements OnInit {
         subscriber.complete();
     }
   }
+  
+    // readAsDataURL()
+
   // formulario añadir articulo
   anadirArticulo(){
     
-    console.log(this.formAnadirArticulo.value);
-
+    console.log(this.formAnadirArticulo.value.imagen);
     this.articulosService.anadirArticulos(this.formAnadirArticulo.value).subscribe( res => {
       console.log(res);
     });
