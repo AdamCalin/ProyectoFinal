@@ -15,8 +15,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
-    height: 60%;
+    width: 60%;
+    height: 65%;
     box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .5);
 }
 
@@ -33,4 +33,21 @@
 .tamano {
     height: 75px;
     width: 75px;
+}
+
+.containerpreview {
+    border: 3px dashed lightblue;
+    width: 20em;
+    height: 30em;
+    overflow: hidden;
+}
+
+.preview {
+    width: 20em;
+    height: 30em;
+}
+
+.preview img {
+    width: 100%;
+    height: 100%;
 }

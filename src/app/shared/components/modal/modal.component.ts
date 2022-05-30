@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-
+import { ArticulosService } from 'src/app/services/articulos/articulos.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',

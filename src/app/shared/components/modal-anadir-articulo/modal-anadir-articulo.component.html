@@ -7,68 +7,98 @@
             </div>
             <section class="container">
                 <h1 class="title"><img class="tamano" src="./assets/images/LOGONEVERLOGIN.png" alt="">Añadir Articulo</h1>
-                <form action="" class="d-flex justify-content-center">
-                    <div class="m-1">
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="text" id="descripcion" placeholder="Descripcion" aria-label="default input example">
-                            <label for="descripcion">Descripcion </label>
+                <!-- preview -->
+                <div class="d-flex justify-content-center">
+                    <div class="containerpreview">
+                        <div class="preview" *ngIf="laImagen">
+                            <img [src]="laImagen" alt="">
                         </div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="text" id="fabricante" placeholder="Fabricante" aria-label="default input example">
-                            <label for="fabricante">Fabricante </label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="number" id="peso" placeholder="Peso" aria-label="default input example">
-                            <label for="peso">Peso </label>
-                        </div>
-                        <div class="">
-                            <label for="talla">Talla</label>
-                            <select name="" id="talla" class="form-select form-select-sm my-2">
+                    </div>
+                    <form action="" class="d-flex justify-content-center" [formGroup]="formAnadirArticulo">
+                        <div class="m-1">
+                            <!-- descripcion -->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" id="descripcion" placeholder="Descripcion" aria-label="default input example" formControlName="descripcion">
+                                <label for="descripcion">Descripcion </label>
+                            </div>
+                            <!-- fabricante -->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" id="fabricante" placeholder="Fabricante" aria-label="default input example" formControlName="fabricante">
+                                <label for="fabricante">Fabricante </label>
+                            </div>
+                            <!-- peso -->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" id="peso" placeholder="Peso" aria-label="default input example" formControlName="peso">
+                                <label for="peso">Peso </label>
+                            </div>
+                            <div class="">
+                                <!-- talla -->
+                                <label for="talla">Talla</label>
+                                <select name="" id="talla" class="form-select form-select-sm my-2" formControlName="talla">
                                 <option value="" disabled selected>--Elige Talla--</option>
                                 <option value="S">S</option>
                                 <option value="M">M</option>
                                 <option value="L">L</option>
                             </select>
 
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="precio">Precio </label>
-                            <input class="form-control" type="number" id="precio" placeholder="Precio" aria-label="default input example">
-                        </div>
-                        <input class="form-control" type="file" id="formFile">
-                    </div>
-                    <div class="m-1">
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="number" id="alto" placeholder="Alto" aria-label="default input example">
-                            <label for="alto">Alto </label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="number" id="largo" placeholder="Largo" aria-label="default input example">
-                            <label for="largo">Largo </label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="number" id="ancho" placeholder="Ancho" aria-label="default input example">
-                            <label for="ancho">Ancho </label>
-                        </div>
+                            </div>
+                            <!-- precio -->
+                            <div class="form-floating mb-3">
+                                <label for="precio">Precio </label>
+                                <input class="form-control" type="number" id="precio" placeholder="Precio" aria-label="default input example" formControlName="precio">
+                            </div>
 
-                        <div class="">
-                            <label for="color">Color</label>
-                            <select name="" id="color" class="form-select form-select-sm my-2">
+                            <!-- imagen -->
+
+                            <input class="form-control" type="file" id="formFile" (change)="base64($event)" formControlName="imagen">
+                        </div>
+                        <div class="m-1">
+                            <!-- alto -->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" id="alto" placeholder="Alto" aria-label="default input example" formControlName="alto">
+                                <label for="alto">Alto </label>
+                            </div>
+                            <!-- largo -->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" id="largo" placeholder="Largo" aria-label="default input example" formControlName="largo">
+                                <label for="largo">Largo </label>
+                            </div>
+                            <!-- ancho -->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" id="ancho" placeholder="Ancho" aria-label="default input example" formControlName="ancho">
+                                <label for="ancho">Ancho </label>
+                            </div>
+
+                            <div class="">
+                                <!-- color -->
+                                <label for="color">Color</label>
+                                <select name="" id="color" class="form-select form-select-sm my-2" formControlName="color">
                                 <option value="" disabled selected>--Elige Color--</option>
-                          <option value="">Negro</option>
-                          <option value="">Blanco</option>
-                          <option value="">Gris</option>
-                          <option value="">Azul Oscuro</option>
-                          <option value="">Verde Oliva</option>
+                                <option value="">Negro</option>
+                                <option value="">Blanco</option>
+                                <option value="">Gris</option>
+                                <option value="">Azul Oscuro</option>
+                                <option value="">Verde Oliva</option>
+                            </select>
+                            </div>
+                            <div class="">
+                                <!-- sexo -->
+                                <label for="sexo">Sexo</label>
+                                <select name="" id="sexo" class="form-select form-select-sm my-2" formControlName="sexo">
+                                <option value="" disabled selected>--Elige Sexo--</option>
+                          <option value="H">H</option>
+                          <option value="M">M</option>
                          </select>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <!-- registro -->
+                                <input class="form-control" type="text" id="n_registro" placeholder="n_registro" aria-label="default input example" formControlName="n_registro">
+                                <label for="n_registro">Registro</label>
+                            </div>
+                            <button type="button" class="btn btn-outline-dark m-2" (click)="anadirArticulo()">Añadir</button>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="number" id="registro" placeholder="Precio" aria-label="default input example">
-                            <label for="registro">Registro</label>
-                        </div>
-                        <input type="button" value="Añadir" class="btn btn-outline-dark m-2">
-                    </div>
-                </form>
+                    </form>
+                </div>
             </section>
         </div>
     </div>

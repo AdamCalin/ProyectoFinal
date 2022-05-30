@@ -21,6 +21,10 @@ export class ArticulosService {
     return this.http.get(`${this.url}/articulos`); 
   }
 
+  anadirArticulos(body: any): Observable<any>{
+    return this.http.post(`${this.url}/articulos`, body, {observe: 'response'});
+  }
+
   login(body:any):Observable<any>{
     return this.http.post(`${this.url}/cuentas/login`, body, {observe:'response'});
   }
