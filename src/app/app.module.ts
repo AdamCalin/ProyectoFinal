@@ -24,6 +24,9 @@ import { HomeComponent } from './components/contenido/home/home.component';
 import { ContenidoTiendaComponent } from './components/contenido/tienda/contenido-tienda/contenido-tienda.component';
 import { RealizadosLlegadosComponent } from './components/contenido/pedidos/realizados-llegados/realizados-llegados.component';
 
+//ngrx
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 //ANIMACIONES
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -37,6 +40,9 @@ import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarri
 import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { authReducer } from './states/loginstate/login.reducer';
+import { LoginEffects } from './states/loginstate/login.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +75,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    StoreModule.forRoot({ auth: authReducer}),
+    EffectsModule.forRoot([LoginEffects]),
     APP_ROUTING
   ],
   providers: [PrendaService],
