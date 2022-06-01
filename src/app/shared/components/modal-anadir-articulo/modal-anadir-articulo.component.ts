@@ -63,7 +63,6 @@ export class ModalAnadirArticuloComponent implements OnInit {
       });
       
       observable.subscribe((d) => {
-        console.log(d);
         this.laImagen = d;
         this.base64code = d;
         this.formAnadirArticulo.value.imagen = d;  
@@ -90,7 +89,7 @@ export class ModalAnadirArticuloComponent implements OnInit {
   // formulario añadir articulo
   anadirArticulo(){
     
-    console.log(this.formAnadirArticulo.value.imagen);
+    //console.log(this.formAnadirArticulo.value.imagen);
     this.articulosService.anadirArticulos(this.formAnadirArticulo.value).subscribe( res => {
       console.log(res);
     });
