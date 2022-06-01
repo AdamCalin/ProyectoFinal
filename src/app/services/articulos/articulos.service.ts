@@ -25,14 +25,4 @@ export class ArticulosService {
     return this.http.post(`${this.url}/articulos`, body, {observe: 'response'});
   }
 
-  login(body:any):Observable<any>{
-    return this.http.post(`${this.url}/cuentas/login`, body, {observe:'response'});
-  }
-
-  usuario(id_usuario : any):Observable<any>{
-    let headers = this.headers();
-    
-    return this.http.get(`${this.url}/usuarios/${id_usuario}`, {headers});
-  }
-
 }

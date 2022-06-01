@@ -86,7 +86,6 @@ export class ModalAnadirArticuloComponent implements OnInit {
     }
   }
   
-    // readAsDataURL()
 
   // formulario añadir articulo
   anadirArticulo(){

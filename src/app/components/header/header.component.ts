@@ -1,7 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, animate, transition, style, state } from '@angular/animations';
-import { ArticulosService } from '../../services/articulos/articulos.service';
-import Swal from 'sweetalert2';
+import { LoginService } from 'src/app/services/login/login.service';
+import { Store } from '@ngrx/store';
+import * as LoginActions from '../../shared/components/state/login/login.actions';
+import * as UI from '../../shared/components/state/ui.actions';
+import { AppState } from 'src/app/app.reducer';
+
+
 
 @Component({
   selector: 'app-header',
@@ -27,9 +32,15 @@ export class HeaderComponent implements OnInit {
    mostrarBoton: boolean = true;
   datosUsuario:any;
 
+
   @Output() datos = new EventEmitter<any>();
-  constructor(public articulosService : ArticulosService) {
-   }
+
+  dataLogin:any ;
+  constructor(public loginService : LoginService, private store: Store<AppState>) {
+    this.store.select('login').subscribe(state => {
+      this.dataLogin = state; 
+    });
+  }
 
   ngOnInit() {
     this.refresh();    
@@ -39,61 +50,21 @@ export class HeaderComponent implements OnInit {
   }
 
   login($event : any){
-    console.log($event);
-    
-    this.articulosService.login($event).subscribe( res =>{
-      console.log(res);
-      
-      if(res.status == 200){
+    // console.log($event);
+    this.loginService.login($event);
         this.mostrarBoton = false;
-        this.showModal = false;
-        sessionStorage.setItem('token', res.body.result.token);
-        sessionStorage.setItem('id', res.body.result.id_usuario);
-        Swal.fire({
-          width: 200,
-          position: 'bottom-end',
-          icon: 'success',
-          title: 'Sesion iniciada correctamente',
-          showConfirmButton: false,
-          timer: 1500
-        });
-        
-          this.articulosService.usuario(sessionStorage.getItem('id')).subscribe( res => {
-            console.log(res);
-            this.datosUsuario = res;
-            this.datos.emit(res);
-          }, err =>
-          {
-            console.log(err.error);
-           
-          });
-        
-       
-      }
-    },
-    err =>
-    {
-      console.log(err.error);
-      Swal.fire({
-        width: 200,
-        position: 'bottom-end',
-        icon: 'error',
-        title: 'Error. Credenciales incorrectos',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    }
-    );
-    
+        this.showModal = false; 
+        this.store.dispatch( UI.stopLoading());
   }
   logout($event: any){
     this.mostrarBoton = true;
-    sessionStorage.clear();
+    sessionStorage.removeItem('login');
+    this.store.dispatch( LoginActions.unSetUser());
+    this.store.dispatch( LoginActions.unsetDatosUser());
   }
 
   refresh(){
-
-    sessionStorage.getItem('token') ? this.mostrarBoton = false : this.mostrarBoton = true;
+    this.dataLogin ? this.mostrarBoton = true : this.mostrarBoton = false;
   }
-
+//arreglar boton inicio sesion
 }

@@ -24,7 +24,6 @@ import { HomeComponent } from './components/contenido/home/home.component';
 import { ContenidoTiendaComponent } from './components/contenido/tienda/contenido-tienda/contenido-tienda.component';
 import { RealizadosLlegadosComponent } from './components/contenido/pedidos/realizados-llegados/realizados-llegados.component';
 
-
 //ANIMACIONES
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -37,6 +36,13 @@ import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarri
 import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+//ngrx
+import { StoreModule } from '@ngrx/store';
+import { appReducers, metaReducers} from './app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +75,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    StoreModule.forRoot( appReducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
     APP_ROUTING
   ],
   providers: [PrendaService],

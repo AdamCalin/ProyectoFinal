@@ -1,28 +1,42 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ArticulosService } from 'src/app/services/articulos/articulos.service';
+import { AppState } from 'src/app/app.reducer';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { LoginService } from '../../../services/login/login.service';
+
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit{
 
   @Input() position: string = 'right'; 
 
   @Output() open = new EventEmitter<boolean>();
 
-  @Output() login = new EventEmitter<any>();
- 
+  @Output() login = new EventEmitter<any>(); 
   public mostrar: boolean = true;
   
   formLogin : FormGroup;
+  loading: boolean = false;
+  uisubscription!: Subscription;
 
-  constructor(private formBuilder : FormBuilder) {
+  showModal: boolean = false;
+  fadeOut: boolean = false;
+  mostrarBoton: boolean = true;
+  datosUsuario:any;
+
+  constructor(private formBuilder : FormBuilder, private store: Store<AppState>, private loginService:LoginService) {
     this.formLogin = this.formBuilder.group({
       user: new FormControl('', Validators.required),
     pass : new FormControl('', Validators.required)
-  }) }
+  }) 
+ 
+}
+ 
  
   setClose() {
     let value = false;
@@ -40,7 +54,10 @@ export class ModalComponent implements OnInit {
 
   }
 
+
   dologin(){
-    this.login.emit(this.formLogin.value);
+     this.login.emit(this.formLogin.value);
+      }
+
+
   }
-}
