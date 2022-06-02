@@ -28,7 +28,6 @@ import { RealizadosLlegadosComponent } from './components/contenido/pedidos/real
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 //servicios
-import { PrendaService } from './services/prenda.service';
 import { SeasonComponent } from './components/contenido/home/season/season.component';
 import { ModalModule } from './shared/components/modal/modal.module';
 import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/modalAnadir.module';
@@ -37,11 +36,14 @@ import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+
+
 //ngrx
 import { StoreModule } from '@ngrx/store';
 import { appReducers, metaReducers} from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { GestionUsuariosComponent } from './components/contenido/gestion/gestion-usuarios/gestion-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { environment } from 'src/environments/environment';
     HomeComponent,
     ContenidoTiendaComponent,
     RealizadosLlegadosComponent,
-    SeasonComponent
+    SeasonComponent,
+    GestionUsuariosComponent
   ],
   imports: [
     ModalModule,
@@ -83,7 +86,7 @@ import { environment } from 'src/environments/environment';
     }),
     APP_ROUTING
   ],
-  providers: [PrendaService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,8 +3,9 @@
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" [routerLink]="['pedidos-gestion']" routerLinkActive="active">PEDIDOS</a>
-                <a class="nav-link" [routerLink]="['pedidos-stock']" routerLinkActive="active">STOCK</a>
+                <a class="nav-link active" aria-current="page" [routerLink]="['pedidos-gestion']" routerLinkActive="active" *ngIf="permisos == 1 || permisos == 3 || permisos == 2">PEDIDOS</a>
+                <a class="nav-link" [routerLink]="['pedidos-stock']" routerLinkActive="active" *ngIf="permisos == 1 || permisos == 2">STOCK</a>
+                <a class="nav-link" [routerLink]="['usuarios-gestion']" routerLinkActive="active" *ngIf="permisos == 1">USUARIOS</a>
             </div>
         </div>
     </div>

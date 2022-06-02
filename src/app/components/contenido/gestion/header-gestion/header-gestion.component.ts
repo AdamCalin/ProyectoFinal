@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
 
 @Component({
   selector: 'app-header-gestion',
@@ -7,8 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderGestionComponent implements OnInit {
 
-  constructor() { }
-
+  permisos: any;
+  constructor(private store:Store<AppState>) { 
+    this.store.select('login').subscribe((state) => {
+      // console.log(state.datosUser.iD_PERFIL);
+      this.permisos = state.datosUser.iD_PERFIL;
+    });
+  
+  }
   ngOnInit() {
   }
 

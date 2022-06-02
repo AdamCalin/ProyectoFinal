@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PrendaService } from 'src/app/services/prenda.service';
 
 @Component({
   selector: 'app-contenido-tienda',

@@ -27,7 +27,6 @@ export class ModalComponent implements OnInit{
   showModal: boolean = false;
   fadeOut: boolean = false;
   mostrarBoton: boolean = true;
-  datosUsuario:any;
 
   constructor(private formBuilder : FormBuilder, private store: Store<AppState>, private loginService:LoginService) {
     this.formLogin = this.formBuilder.group({
@@ -56,8 +55,8 @@ export class ModalComponent implements OnInit{
 
 
   dologin(){
-     this.login.emit(this.formLogin.value);
-      }
+      this.login.emit(this.formLogin.value);
+  }
 
 
   }

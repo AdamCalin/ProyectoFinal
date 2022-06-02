@@ -14,17 +14,12 @@
             <div class="circle"></div>
 
             <div class="container containerTexto">
-                <h1>{{datosUsuario?.usuario}}</h1>
-                <h1>{{datosUsuario?.email}}</h1>
-
-                <button class="btn btn-outline-dark" routerLinkActive="active">
+                <h1>Usuario: {{dataUser.usuario}}</h1>
+                <h1>Email: {{dataUser.email}}</h1>
+                <a class="nav-link underline btn btn-outline-dark" routerLinkActive="active" (click)="redireccionPedidos()">
                     <i class="bi bi-person-fill"></i>Pedidos
-                </button>
-                <button class="btn btn-outline-danger mx-3">
-                    Cerrar Sesion
-                </button >
+                </a>
             </div>
         </div>
     </div>
 </div>
-<!-- *ngIf="perfil == 1" -->

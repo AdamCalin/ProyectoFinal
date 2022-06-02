@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, animate, transition, style, state } from '@angular/animations';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -18,18 +20,27 @@ import { trigger, animate, transition, style, state } from '@angular/animations'
 })
 export class MenuComponent implements OnInit {
 
-   @Input() datosUsuario : any;
+  //  @Input() datosUsuario : any;
 
-  public showModal: boolean = false;
-  public showModal2 :boolean = false;
-  public fadeOut: boolean = false;
+
+
+   showModal: boolean = false;
+   showModal2 :boolean = false;
+   fadeOut: boolean = false;
+   permisos: any;
+
+
+  constructor(private store:Store<AppState>) { 
+    this.store.select('login').subscribe((state) => {
+      // console.log(state.datosUser.iD_PERFIL);
+      this.permisos = state.datosUser.iD_PERFIL;
+    });
   
-  constructor() {
-   }
+  }
 
   ngOnInit() {
+  //  console.log(this.datosUsuario);
     
-    console.log(this.datosUsuario);
     
   }
 

@@ -12,12 +12,12 @@
                         <i class="bi bi-bag-fill"></i> Tienda
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="permisos == 4 || permisos == 1">
                     <a class="nav-link underline" [routerLink]="['pedidos']" routerLinkActive="active">
                         <i class="bi bi-person-fill"></i>Pedidos
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="permisos == 1 || permisos == 2 || permisos == 3 ">
                     <a class="nav-link underline" [routerLink]="['gestion']" routerLinkActive="active">
                         <i class="bi bi-gear-fill"></i> Gestión
                     </a>
@@ -31,7 +31,7 @@
                     </span>
                 </button>
 
-                <button class="nav-link link-dark" href="#" (click)="showModal2 = true;"><i class="bi bi-person"></i></button>
+                <button class="nav-link link-dark" href="#" (click)="showModal2 = true;" *ngIf="permisos"><i class="bi bi-person"></i></button>
                 <!-- VENTANA CON AJUSTES USUARIOS BASICOS -->
             </div>
         </div>
@@ -42,6 +42,6 @@
 
 </app-modal-carrito>
 
-<app-modal-perfil [datosUsuario]="datosUsuario" @fade *ngIf="showModal2" (open)="setClose($event)">
+<app-modal-perfil @fade *ngIf="showModal2" (open)="setClose($event)">
 
 </app-modal-perfil>

@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import * as LoginActions from '../../shared/components/state/login/login.actions';
 import * as UI from '../../shared/components/state/ui.actions';
 import { AppState } from 'src/app/app.reducer';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 
@@ -30,20 +32,22 @@ export class HeaderComponent implements OnInit {
    showModal: boolean = false;
    fadeOut: boolean = false;
    mostrarBoton: boolean = true;
-  datosUsuario:any;
-
+   datosUsuario:any;
+   dataLogin:any ;
 
   @Output() datos = new EventEmitter<any>();
 
-  dataLogin:any ;
-  constructor(public loginService : LoginService, private store: Store<AppState>) {
+  
+  constructor(public loginService : LoginService, private store: Store<AppState>, private router:Router) {
     this.store.select('login').subscribe(state => {
       this.dataLogin = state; 
     });
   }
 
   ngOnInit() {
-    this.refresh();    
+    this.refresh(); 
+    console.log(this.mostrarBoton);
+      
   }
   setClose($event: any) {
     this.showModal = false;
@@ -51,20 +55,50 @@ export class HeaderComponent implements OnInit {
 
   login($event : any){
     // console.log($event);
-    this.loginService.login($event);
+      this.store.dispatch( UI.stopLoading());
+      this.loginService.login($event).subscribe( (res:any) => {
+        if(res.status == 200){
+          // console.log( res )
+        this.store.dispatch( LoginActions.setUser( {token : res.body.result}));
+        this.loginService.usuario(res.body.result.id_usuario);
         this.mostrarBoton = false;
-        this.showModal = false; 
-        this.store.dispatch( UI.stopLoading());
+        this.showModal = false;
+        Swal.fire({
+            width: 200,
+            position: 'bottom-end',
+            icon: 'success',
+            title: 'Sesion iniciada correctamente',
+            showConfirmButton: false,
+            timer: 1300
+            })
+        }
+      }, (error : any) => {
+          
+            this.store.dispatch( LoginActions.unSetUser());
+            Swal.fire({
+                width: 200,
+                position: 'bottom-end',
+                icon: 'error',
+                title: 'Error. Credenciales incorrectas',
+                showConfirmButton: false,
+                timer: 1300
+              });
+        
+    });
+  
   }
   logout($event: any){
+    // console.log(this.mostrarBoton);
+    this.router.navigate(['/home']);
     this.mostrarBoton = true;
     sessionStorage.removeItem('login');
     this.store.dispatch( LoginActions.unSetUser());
     this.store.dispatch( LoginActions.unsetDatosUser());
+    
   }
 
   refresh(){
-    this.dataLogin ? this.mostrarBoton = true : this.mostrarBoton = false;
+    (this.dataLogin.token.token && this.dataLogin.token.token != '')? this.mostrarBoton = false : this.mostrarBoton = true;
+    
   }
-//arreglar boton inicio sesion
 }
