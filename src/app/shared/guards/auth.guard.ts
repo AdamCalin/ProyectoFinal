@@ -20,12 +20,11 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(this.dataLogin.token){
-      
-      return true;
+        return true;
     }else{
     this.router.navigate(['/home']);
       return false;
     }
   }
-  
+  //hacer guards segun usuario logeado
 }
