@@ -1,10 +1,9 @@
 export interface IDatosUser {
 
-    email?: string,
-    iD_PERFIL?: number,
     iD_USUARIO?: number,
     usuario?: string
-
+    email?: string,
+    iD_PERFIL?: number,
 }
 
 

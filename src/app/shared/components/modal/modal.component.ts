@@ -4,6 +4,7 @@ import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../../../services/login/login.service';
+import { __values } from 'tslib';
 
 
 @Component({
@@ -18,9 +19,12 @@ export class ModalComponent implements OnInit{
   @Output() open = new EventEmitter<boolean>();
 
   @Output() login = new EventEmitter<any>(); 
+  @Output() register = new EventEmitter<any>();
+
   public mostrar: boolean = true;
   
   formLogin : FormGroup;
+  formRegister: FormGroup;
   loading: boolean = false;
   uisubscription!: Subscription;
 
@@ -32,7 +36,13 @@ export class ModalComponent implements OnInit{
     this.formLogin = this.formBuilder.group({
       user: new FormControl('', Validators.required),
     pass : new FormControl('', Validators.required)
-  }) 
+  });
+  this.formRegister = this.formBuilder.group({
+    user: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    pass : new FormControl('', Validators.required)
+});
+
  
 }
  
@@ -57,6 +67,8 @@ export class ModalComponent implements OnInit{
   dologin(){
       this.login.emit(this.formLogin.value);
   }
-
+  doregister(){
+      this.register.emit(this.formRegister.value);
+  }
 
   }

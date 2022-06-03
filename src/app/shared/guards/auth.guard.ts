@@ -19,6 +19,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      // if(route.url.indexOf('stock') >= 0)
     if(this.dataLogin.token){
         return true;
     }else{

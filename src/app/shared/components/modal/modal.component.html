@@ -55,13 +55,13 @@
                                     <input type="text " class="form-control input_user " value=" " placeholder="Email ">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 login_container">
-                                    <button name="button" type="button" (click)="dologin()" (keyup.enter)="dologin()" class="btn login_btn">Iniciar Sesion</button>
+                                    <button name="button" type="button" class="btn login_btn" (click)="dologin()" (keyup.enter)="dologin()">Iniciar Sesion</button>
                                 </div>
                             </form>
                         </ng-template>
                         <ng-template #register>
                             <!-- FORMULARIO REGISTRARSE -->
-                            <form class="container">
+                            <form class="container" [formGroup]="formRegister">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="lineaTRegister"></div>
                                     <h6>Registro</h6>
@@ -70,22 +70,22 @@
                                     <div class="input-group-append ">
                                         <span class="input-group-text "><i class="bi bi-person-fill "></i></span>
                                     </div>
-                                    <input type="text " class="form-control input_user " placeholder="Usuario ">
+                                    <input type="text " class="form-control input_user " placeholder="Usuario" formControlName="user">
                                 </div>
                                 <div class="input-group mb-3 ">
                                     <div class="input-group-append ">
                                         <span class="input-group-text "><i class="bi bi-at "></i></span>
                                     </div>
-                                    <input type="text " class="form-control input_user " placeholder="Email ">
+                                    <input type="text " class="form-control input_user " placeholder="Email" formControlName="email">
                                 </div>
                                 <div class="input-group mb-2 ">
                                     <div class="input-group-append ">
                                         <span class="input-group-text "><i class="bi bi-key-fill "></i></span>
                                     </div>
-                                    <input type="password " class="form-control input_pass " placeholder="Contraseña ">
+                                    <input type="password" class="form-control input_pass " placeholder="**********" formControlName="pass">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 login_container ">
-                                    <button type="button " class="btn login_btn ">Registrarse</button>
+                                    <button type="button " class="btn login_btn " (click)="doregister()" (keyup.enter)="doregister()">Registrarse</button>
                                 </div>
                             </form>
                         </ng-template>

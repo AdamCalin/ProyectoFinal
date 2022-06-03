@@ -16,7 +16,8 @@ export const appReducers: ActionReducerMap<AppState> = {
 export function persitsData(reducer: ActionReducer<any>): ActionReducer<any> {
     const config: LocalStorageConfig = {
       keys: [
-           {'login': {}}
+          {'ui': {}},
+          {'login': {}}
       ],
       rehydrate: true,
       removeOnUndefined: true,

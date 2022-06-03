@@ -27,10 +27,13 @@ export class LoginService {
      })
   }
 
-
     
   login(body:any){
     return this.http.post(`${this.url}/cuentas/login`, body, {observe:'response'});
+  }
+
+  register(body:any){
+    return this.http.post(`${this.url}/cuentas/registrar`, body, {observe:'response'});
   }
 
   usuario(id_usuario : any){

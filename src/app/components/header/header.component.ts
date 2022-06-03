@@ -97,6 +97,42 @@ export class HeaderComponent implements OnInit {
     
   }
 
+  register($event : any){
+    this.store.dispatch( UI.stopLoading());
+    this.loginService.register($event).subscribe( (res:any) => {
+      console.log(res);
+      
+      if(res.status == 200){
+        console.log( res );
+      this.store.dispatch( LoginActions.setUser( {token : res.body.result}));
+      this.loginService.usuario(res.body.result.id_usuario);
+      this.mostrarBoton = false;
+      this.showModal = false;
+      Swal.fire({
+          width: 200,
+          position: 'bottom-end',
+          icon: 'success',
+          title: 'Registro realizado correctamente',
+          showConfirmButton: false,
+          timer: 1300
+          })
+      }
+    }, (error : any) => {
+        console.log(error);
+        
+          this.store.dispatch( LoginActions.unSetUser());
+          Swal.fire({
+              width: 200,
+              position: 'bottom-end',
+              icon: 'error',
+              title: 'Error. Credenciales incorrectas',
+              showConfirmButton: false,
+              timer: 1300
+            });
+      
+  });
+  }
+
   refresh(){
     (this.dataLogin.token.token && this.dataLogin.token.token != '')? this.mostrarBoton = false : this.mostrarBoton = true;
     
