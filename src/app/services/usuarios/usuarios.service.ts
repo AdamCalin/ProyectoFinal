@@ -36,5 +36,8 @@ export class UsuarioService {
         let headers = this.headers();
         return this.http.get(`${this.url}/perfiles`, {headers});
     }
-
+  postUsuarios(body : any){
+    let headers = this.headers();
+    return this.http.post(`${this.url}/usuarios`, body, {headers});
+  }
 }

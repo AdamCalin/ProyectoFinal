@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { UsuarioService } from 'src/app/services/usuarios/usuarios.service';
-import { trigger, animate, transition, style } from '@angular/animations';
+import { trigger, animate, transition, style, state } from '@angular/animations';
 
 
 @Component({
@@ -19,17 +19,16 @@ import { trigger, animate, transition, style } from '@angular/animations';
         animate(300, style({opacity: 0}))
       ])
     ])
-  ]
+
+]
 })
 export class GestionUsuariosComponent implements AfterViewInit {
   displayedColumns: string[] = ['usuario', 'email', 'perfil', 'edit', 'delete'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  //variables form crear nuevo usuarios
+  //variables from crear nuevo usuarios
   showModal: boolean = false;
-  showModal2 :boolean = false;
   fadeOut: boolean = false;
-
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -37,7 +36,6 @@ export class GestionUsuariosComponent implements AfterViewInit {
   constructor(private usuarios: UsuarioService){
 
   }
-
   ngAfterViewInit() {
     this.datosUsuarios();
     this.dataSource.paginator = this.paginator;
@@ -65,7 +63,6 @@ export class GestionUsuariosComponent implements AfterViewInit {
    
   setClose($event: any) {
     this.showModal = false;
-    this.showModal2 = false;
   }
 
 }

@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalAnadirUsuarioComponent } from './modal-anadir-usuario.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [ ModalAnadirUsuarioComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
-  exports : [ ModalAnadirUsuarioComponent ]
+  exports : [ ModalAnadirUsuarioComponent, ]
 })
-export class ModalModuleUsuario { }
+export class ModalAnadirUsuario { }

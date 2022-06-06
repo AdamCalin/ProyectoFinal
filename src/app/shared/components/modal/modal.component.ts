@@ -4,7 +4,6 @@ import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../../../services/login/login.service';
-import { __values } from 'tslib';
 
 
 @Component({

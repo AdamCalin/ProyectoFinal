@@ -19,8 +19,8 @@ import { trigger, animate, transition, style, state } from '@angular/animations'
 })
 export class PedidosStockComponent implements OnInit {
 
-  public showModal: boolean = false;
-  public fadeOut: boolean = false;
+  showModal: boolean = false;
+  fadeOut: boolean = false;
   
   constructor() {
    }

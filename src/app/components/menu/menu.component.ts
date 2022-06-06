@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, animate, transition, style, state } from '@angular/animations';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',

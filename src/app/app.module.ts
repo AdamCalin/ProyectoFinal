@@ -27,13 +27,15 @@ import { RealizadosLlegadosComponent } from './components/contenido/pedidos/real
 //ANIMACIONES
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-//servicios
+//modulos
 import { SeasonComponent } from './components/contenido/home/season/season.component';
 import { ModalModule } from './shared/components/modal/modal.module';
 import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/modalAnadir.module';
 import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarrito.module';
 import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
-import { ModalModuleUsuario } from './shared/components/modal-anadir-usuario/modalAnadir.module';
+import {ModalAnadirUsuario} from './shared/components/modal-anadir-usuario/modalUsuario.module';
+
+//servicios
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -44,6 +46,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 //ngrx
 import { StoreModule } from '@ngrx/store';
@@ -80,7 +83,7 @@ import { GestionUsuariosComponent } from './components/contenido/gestion/gestion
     ModalModuleArticulo,
     ModalModuleCarrito,
     ModalModulePerfil,
-    ModalModuleUsuario,
+    ModalAnadirUsuario,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -94,6 +97,7 @@ import { GestionUsuariosComponent } from './components/contenido/gestion/gestion
     MatButtonModule,
     MatPaginatorModule,
     MatInputModule,
+    MatSelectModule,
     //redux
     StoreModule.forRoot( appReducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
