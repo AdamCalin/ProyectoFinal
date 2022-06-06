@@ -33,7 +33,7 @@ import { ModalModule } from './shared/components/modal/modal.module';
 import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/modalAnadir.module';
 import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarrito.module';
 import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
-import { ModalModuleUsuario } from './shared/components/modal-anadir-articulo copy/modalAnadir.module';
+import { ModalModuleUsuario } from './shared/components/modal-anadir-usuario/modalAnadir.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
