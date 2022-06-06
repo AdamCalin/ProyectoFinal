@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AppState } from 'src/app/app.reducer';
 import * as LoginActions from '../../components/state/login/login.actions';
-import { PedidosComponent } from '../../../components/contenido/pedidos/pedidos.component';
 
 
 @Component({

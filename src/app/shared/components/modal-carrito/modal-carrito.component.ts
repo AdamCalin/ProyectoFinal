@@ -1,5 +1,5 @@
 import { Component, OnInit,  Input, Output, EventEmitter } from '@angular/core';
-import { trigger, animate, transition, style, state } from '@angular/animations';
+import { trigger, animate, transition, style } from '@angular/animations';
 
 @Component({
   selector: 'app-modal-carrito',

@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.refresh(); 
-    console.log(this.mostrarBoton);
+    // console.log(this.mostrarBoton);
       
   }
   setClose($event: any) {

@@ -33,10 +33,17 @@ import { ModalModule } from './shared/components/modal/modal.module';
 import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/modalAnadir.module';
 import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarrito.module';
 import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
+import { ModalModuleUsuario } from './shared/components/modal-anadir-articulo copy/modalAnadir.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-
+//angular material
+import { MatSliderModule } from '@angular/material/slider';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 //ngrx
 import { StoreModule } from '@ngrx/store';
@@ -68,16 +75,26 @@ import { GestionUsuariosComponent } from './components/contenido/gestion/gestion
     GestionUsuariosComponent
   ],
   imports: [
+    //modulos
     ModalModule,
     ModalModuleArticulo,
     ModalModuleCarrito,
     ModalModulePerfil,
+    ModalModuleUsuario,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    //angularmaterial
+    MatSliderModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatInputModule,
+    //redux
     StoreModule.forRoot( appReducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

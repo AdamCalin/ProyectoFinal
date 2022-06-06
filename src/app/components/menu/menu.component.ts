@@ -44,8 +44,6 @@ export class MenuComponent implements OnInit {
     
   }
 
-  
-
 
   setClose($event: any) {
     this.showModal = false;
