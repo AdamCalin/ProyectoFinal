@@ -1,16 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { UsuarioService } from '../../../services/usuarios/usuarios.service';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
-interface Car {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-modal-anadir-usuario',
@@ -22,13 +14,13 @@ export class ModalAnadirUsuarioComponent implements OnInit {
  
   @Input() position: string = 'right'; 
 
-  @Output() open = new EventEmitter<boolean>();
+  @Output() openAdd = new EventEmitter<boolean>();
   
+  @Output() datos = new EventEmitter<boolean>();
   selected = 'option2';
   mostrar: boolean = true;
-
+  dataUsuarios : any;
   formAnadirUsuario: FormGroup ;
-
 
    constructor(private formBuilder : FormBuilder, private usuarios: UsuarioService) {
       this.formAnadirUsuario = this.formBuilder.group({
@@ -43,7 +35,7 @@ export class ModalAnadirUsuarioComponent implements OnInit {
   // cerrer modulo
   setClose() {
     let value = false;
-    this.open.emit(value);
+    this.openAdd.emit(value);
   }
   ngOnInit(){
     this.getPerfiles();
@@ -52,16 +44,39 @@ export class ModalAnadirUsuarioComponent implements OnInit {
   getPerfiles(){
     this.usuarios.getPerfiles().subscribe( (res :any) =>{
       this.perfiles = res;
-      console.log(res);
+      // console.log(res);
       
     })
   }
+ 
+
 
   anadirUsuario(){
     // console.log(this.formAnadirUsuario.value);
     this.usuarios.postUsuarios(this.formAnadirUsuario.value).subscribe( (res :any ) => {
       // console.log(res);
-      
+      if(res.retCode == 0){
+        Swal.fire({
+          icon: 'success',
+          title: 'Añadir Usuario',
+          text: res.mensaje
+        });
+        this.datos.emit(true);
+        this.setClose();
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Añadir Usuario',
+          text: res.mensaje
+        });
+      }
+      // console.log(res);
+    }, (error :any) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Añadir Usuario',
+        text: error.mensaje
+      });
     });
   }
 

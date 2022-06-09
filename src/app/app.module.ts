@@ -34,7 +34,7 @@ import { ModalModuleArticulo } from './shared/components/modal-anadir-articulo/m
 import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarrito.module';
 import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
 import {ModalAnadirUsuario} from './shared/components/modal-anadir-usuario/modalUsuario.module';
-
+import {ModalEditarUsuario} from './shared/components/modal-editar-usuario/modalEditar.module';
 //servicios
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -84,6 +84,7 @@ import { GestionUsuariosComponent } from './components/contenido/gestion/gestion
     ModalModuleCarrito,
     ModalModulePerfil,
     ModalAnadirUsuario,
+    ModalEditarUsuario,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

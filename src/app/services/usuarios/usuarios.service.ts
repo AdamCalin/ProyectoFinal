@@ -13,6 +13,7 @@ export class UsuarioService {
 
   url:string = "http://localhost:7187/api";
 
+
   constructor(private http: HttpClient, private store:Store<AppState>) {
     this.store.select('login').subscribe(state => {
       this.dataLogin = state.token; 
@@ -32,12 +33,26 @@ export class UsuarioService {
     // console.log(headers);
     return this.http.get(`${this.url}/usuarios`, {headers});
   } 
-    getPerfiles(){
+  getPerfiles(){
         let headers = this.headers();
         return this.http.get(`${this.url}/perfiles`, {headers});
     }
   postUsuarios(body : any){
     let headers = this.headers();
     return this.http.post(`${this.url}/usuarios`, body, {headers});
+  }
+  deleteUsuarios(id : any){
+    let headers = this.headers();
+    return this.http.delete(`${this.url}/usuarios/${id}`, {headers});
+  }
+  
+  updateUsuarios(body: any){
+    let headers = this.headers();
+    return this.http.put(`${this.url}/usuarios`, body, {headers});
+  }
+
+  getUsusarioId(id : any){
+    let headers = this.headers();
+    return this.http.get(`${this.url}/usuarios/${id}`, {headers});
   }
 }
