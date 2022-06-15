@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
+import { AppState } from '../../app.reducer';
+import { IRopa } from 'src/app/interfaces/ropa.interface';
+import { Observable } from 'rxjs';
+
+
 @Injectable({
   providedIn: 'root'
 })
-export class ArticulosService {
+export class TiendaService {
+
+  dataLogin: any = null;
 
   url:string = "http://localhost:7187/api";
 
-  dataLogin: any = null;
 
   constructor(private http: HttpClient, private store:Store<AppState>) {
     this.store.select('login').subscribe(state => {
@@ -23,14 +27,14 @@ export class ArticulosService {
       'Authorization': `Bearer ${this.dataLogin.token}`
      })
   }
-   getArticulos(): Observable<any>{
-    return this.http.get(`${this.url}/articulos`); 
-  }
 
-  anadirArticulos(body: any): Observable<any>{
+  getVistaTienda(){
+
     let headers = this.headers();
-
-    return this.http.post(`${this.url}/articulos`, body, {headers});
+    return this.http.get(`${this.url}/tienda`, {headers});
   }
 
+  getRopa(id:any): Observable<any>{
+      return this.http.get(`${this.url}/ropa/${id}`);
+  }
 }

@@ -67,6 +67,6 @@
     </mat-paginator>
 </div>
 
-<app-modal-anadir-articulo @fade *ngIf="showModalAdd" (open)="setClose($event)">
+<app-modal-anadir-articulo @fade *ngIf="showModalAdd" (open)="setClose($event)" (datos)="actualizarDatos($event)">
 
 </app-modal-anadir-articulo>

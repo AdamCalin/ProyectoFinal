@@ -53,7 +53,7 @@ export class PedidosStockComponent implements AfterViewInit {
 
   datosVistaStock(){
     this.servicioStock.getVistaStock().subscribe( (articulos: any) => {
-      // console.log(articulos);
+      console.log(articulos);
       this.dataSource.data = articulos;
       
     })

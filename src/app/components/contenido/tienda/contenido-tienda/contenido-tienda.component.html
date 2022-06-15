@@ -1,24 +1,57 @@
-<div class="container-fluid row mt-4 d-flex justify-content-center">
-    <div class="card col-4 m-3" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text"></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid ">
+        <div class="collapse navbar-collapse d-flex justify-content-start" id="navbarText">
+            <div class="containerBotones">
+                <button class="btn btn-outline-dark mx-2" (focus)="filterHombre()">HOMBRE</button>
+                <button class="btn btn-outline-dark" (focus)="filterMujer()">MUJER</button>
+
+            </div>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"></li>
-            <li class="list-group-item">
-                <i class="bi bi-circle-fill"></i>
-            </li>
-            <li class="list-group-item"></li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link text-dark">
-                <i class="bi bi-heart"></i>
-            </a>
-            <a href="#" class="card-link text-dark">
-                <i class="bi bi-cart-plus"></i>
-            </a>
+    </div>
+</nav>
+<div class="container">
+    <div class="container my-5">
+        <div class="d-flex">
+            <div class="containerBuscador">
+                <input class="buscador" type="search" placeholder="Buscar" aria-label="Search">
+                <div class="botonBuscador">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
+        <div class="mt-4 col-sm-12 col-md-6 col-lg-3" *ngFor="let datoArticulo of datosArticulo">
+            <div class="card">
+                <div *ngFor="let datoRopa of datosRopa; let i = index">
+                    <img [src]="datoArticulo.iD_ARTICULO == idPulsado ? datosRopa[i].imagen : datoRopa.imagen" class="card-img-top" *ngIf="datoRopa.iD_ARTICULO == datoArticulo.iD_ARTICULO && datoRopa.color == colorImagen">
+                </div>
+                <div class=" card-body ">
+                    <h5 class="card-title ">{{datoArticulo.descripcion}}</h5>
+                </div>
+                <ul class="list-group list-group-flush ">
+                    <!-- <li class="list-group-item ">{{datoRopa.talla}}</li> -->
+                    <li class="list-group-item ">
+                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="black " style="color: black; " (click)="mostrarImagenColor($event) "></i>
+                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle mx-1 colores " name="white " style="color: white; " (click)="mostrarImagenColor($event) "></i>
+                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="blue " style="color: blue " (click)="mostrarImagenColor($event) "></i>
+                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="green " style="color: green " (click)="mostrarImagenColor($event) "></i>
+                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="purple " style="color: purple " (click)="mostrarImagenColor($event) "></i>
+                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="grey " style="color: grey " (click)="mostrarImagenColor($event) "></i>
+
+                    </li>
+                    <li class="list-group-item ">{{datoArticulo.precio}} €</li>
+                </ul>
+                <div class="card-body ">
+                    <a href="# " class="card-link text-dark ">
+                        <i class="bi bi-heart "></i>
+                    </a>
+                    <a href="# " class="card-link text-dark ">
+                        <i class="bi bi-cart-plus "></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

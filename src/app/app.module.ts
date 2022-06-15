@@ -36,7 +36,7 @@ import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.
 import {ModalAnadirUsuario} from './shared/components/modal-anadir-usuario/modalUsuario.module';
 import {ModalEditarUsuario} from './shared/components/modal-editar-usuario/modalEditar.module';
 //servicios
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 //angular material
@@ -47,13 +47,21 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-//ngrx
+//redux
 import { StoreModule } from '@ngrx/store';
 import { appReducers, metaReducers} from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { GestionUsuariosComponent } from './components/contenido/gestion/gestion-usuarios/gestion-usuarios.component';
+//ngx
+
+//spinner
+import { SpinnerModule } from './shared/components/spinner/spinner.module';
+import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
+
+
 
 @NgModule({
   declarations: [
@@ -75,10 +83,11 @@ import { GestionUsuariosComponent } from './components/contenido/gestion/gestion
     ContenidoTiendaComponent,
     RealizadosLlegadosComponent,
     SeasonComponent,
-    GestionUsuariosComponent
+    GestionUsuariosComponent,
   ],
   imports: [
     //modulos
+    HttpClientModule,
     ModalModule,
     ModalModuleArticulo,
     ModalModuleCarrito,
@@ -91,6 +100,7 @@ import { GestionUsuariosComponent } from './components/contenido/gestion/gestion
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    SpinnerModule,
     //angularmaterial
     MatSliderModule,
     MatTableModule,
@@ -98,6 +108,7 @@ import { GestionUsuariosComponent } from './components/contenido/gestion/gestion
     MatButtonModule,
     MatPaginatorModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     //redux
     StoreModule.forRoot( appReducers, { metaReducers }),
@@ -108,7 +119,10 @@ import { GestionUsuariosComponent } from './components/contenido/gestion/gestion
     }),
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
