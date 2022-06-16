@@ -16,7 +16,6 @@ import { PedidosComponent } from './components/contenido/pedidos/pedidos.compone
 import { HeaderPedidosComponent } from './components/contenido/pedidos/header-pedidos/header-pedidos.component';
 import { GestionComponent } from './components/contenido/gestion/gestion.component';
 import { HeaderGestionComponent } from './components/contenido/gestion/header-gestion/header-gestion.component';
-import { MenuTiendaComponent } from './components/contenido/tienda/menu-tienda/menu-tienda.component';
 import { PedidosGestionComponent } from './components/contenido/gestion/pedidos-gestion/pedidos-gestion.component';
 import { PedidosStockComponent } from './components/contenido/gestion/pedidos-stock/pedidos-stock.component';
 import { SeguimientoComponent } from './components/contenido/pedidos/seguimiento/seguimiento.component';
@@ -35,6 +34,9 @@ import { ModalModuleCarrito } from './shared/components/modal-carrito/modalCarri
 import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.module';
 import {ModalAnadirUsuario} from './shared/components/modal-anadir-usuario/modalUsuario.module';
 import {ModalEditarUsuario} from './shared/components/modal-editar-usuario/modalEditar.module';
+import { ModalModulePedido } from './shared/components/modal-anadir-pedido/modalPedido.module';
+
+
 //servicios
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -75,7 +77,6 @@ import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
     HeaderPedidosComponent,
     GestionComponent,
     HeaderGestionComponent,
-    MenuTiendaComponent,
     PedidosGestionComponent,
     PedidosStockComponent,
     SeguimientoComponent,
@@ -101,6 +102,7 @@ import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
     ReactiveFormsModule,
     FormsModule,
     SpinnerModule,
+    ModalModulePedido,
     //angularmaterial
     MatSliderModule,
     MatTableModule,

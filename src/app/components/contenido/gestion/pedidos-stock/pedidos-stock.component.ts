@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, Input, NgModule } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import { UsuarioService } from 'src/app/services/usuarios/usuarios.service';
 import { trigger, animate, transition, style, state } from '@angular/animations';
 import Swal from 'sweetalert2';
 import { AppState } from 'src/app/app.reducer';
@@ -28,7 +27,7 @@ import { StockService } from '../../../../services/stock/stock.service';
 })
 export class PedidosStockComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['Articulo', 'Color','Talla','Cantidad_stock', 'Cantidad_pedido', 'Cantidad_envio', 'edit', 'delete'];
+  displayedColumns: string[] = ['Articulo', 'Color','Talla','Cantidad_stock', 'Cantidad_pedido', 'Cantidad_envio', 'delete'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   //variables from crear nuevo usuarios

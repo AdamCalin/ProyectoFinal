@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Observable, Subscriber } from 'rxjs';
 import { ArticulosService } from 'src/app/services/articulos/articulos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modal-anadir-articulo',
@@ -89,9 +90,32 @@ export class ModalAnadirArticuloComponent implements OnInit {
   // formulario añadir articulo
   anadirArticulo(){
     
-    //console.log(this.formAnadirArticulo.value.imagen);
+    // console.log(this.formAnadirArticulo.value.imagen);
     this.articulosService.anadirArticulos(this.formAnadirArticulo.value).subscribe( res => {
       console.log(res);
+      if(res.retCode == 0){
+        Swal.fire({
+          icon: 'success',
+          title: 'Añadir Articulo',
+          text: res.mensaje
+        });
+        this.setClose();
+      }else{
+        Swal.fire({
+          icon: 'success',
+          title: 'Añadir Articulo',
+          text: res.mensaje
+        });
+        this.setClose();
+      }
+      // console.log(res);
+    }, (error :any) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'No se ha podido añadir el Articulo',
+        text: error.mensaje
+      });
+      this.setClose();
     });
   }
 }
