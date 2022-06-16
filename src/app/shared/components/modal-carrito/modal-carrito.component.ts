@@ -27,7 +27,7 @@ export class ModalCarritoComponent implements OnInit {
   @Output() open = new EventEmitter<boolean>();
  
   public mostrar: boolean = true;
-  
+  showModal: boolean = false;
 
 
   constructor() { }
@@ -35,6 +35,9 @@ export class ModalCarritoComponent implements OnInit {
   setClose() {
     let value = false;
     this.open.emit(value);
+  }
+  setClose2($event: any) {
+    this.showModal = false;
   }
   ngOnInit() {
     

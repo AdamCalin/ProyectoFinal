@@ -1,0 +1,38 @@
+<div class="never-modal ">
+    <div class=" never-modal___wrapper " [ngClass]="position ">
+        <div class="container-fluid h-100 ">
+            <!-- BOTON CERRAR LOGIN -->
+
+            <div class="d-flex justify-content-end my-2 ">
+                <button type="button " class="btn-close " id="cerrar" aria-label="Close" (click)="setClose2();"></button>
+            </div>
+            <h1 class="title"><img class="tamano" src="./assets/images/LOGONEVERLOGIN.png" alt="">Realizar Pedido</h1>
+            <section class="container">
+                <form action="" class="d-flex justify-content-center">
+                    <div class="m-1">
+                        <!-- Usuario -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" id="usuario" placeholder="Usuario" aria-label="default input example" formControlName="usuario">
+                            <label for="usuario">Usuario </label>
+                        </div>
+                        <!-- Email -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" id="email" placeholder="Email" aria-label="default input example" formControlName="email">
+                            <label for="email">Email </label>
+                        </div>
+                        <!-- Perfil -->
+                        <div class="form-floating mb-3">
+                            <select class="form-select" aria-label="Default select example" formControlName="iD_PERFIL">
+                                <option></option>
+                            </select>
+                        </div>
+
+
+
+                        <button type="button" class="btn btn-outline-dark m-2">Editar</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

@@ -22,34 +22,38 @@
     </div>
     <div class="row">
         <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
-        <div class="mt-4 col-sm-12 col-md-6 col-lg-3" *ngFor="let datoArticulo of datosArticulo">
-            <div class="card">
-                <div *ngFor="let datoRopa of datosRopa; let i = index">
-                    <img [src]="datoArticulo.iD_ARTICULO == idPulsado ? datosRopa[i].imagen : datoRopa.imagen" class="card-img-top" *ngIf="datoRopa.iD_ARTICULO == datoArticulo.iD_ARTICULO && datoRopa.color == colorImagen">
-                </div>
-                <div class=" card-body ">
-                    <h5 class="card-title ">{{datoArticulo.descripcion}}</h5>
-                </div>
-                <ul class="list-group list-group-flush ">
-                    <!-- <li class="list-group-item ">{{datoRopa.talla}}</li> -->
-                    <li class="list-group-item ">
-                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="black " style="color: black; " (click)="mostrarImagenColor($event) "></i>
-                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle mx-1 colores " name="white " style="color: white; " (click)="mostrarImagenColor($event) "></i>
-                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="blue " style="color: blue " (click)="mostrarImagenColor($event) "></i>
-                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="green " style="color: green " (click)="mostrarImagenColor($event) "></i>
-                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="purple " style="color: purple " (click)="mostrarImagenColor($event) "></i>
-                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="grey " style="color: grey " (click)="mostrarImagenColor($event) "></i>
+        <div class="shell">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" *ngFor="let datoArticulo of datosArticulo">
+                        <div class="wsk-cp-product">
+                            <div class="wsk-cp-img" *ngFor="let datoRopa of datosRopa; let i = index">
+                                <img [src]="datoArticulo.iD_ARTICULO == idPulsado ? datosRopa[i].imagen : datoRopa.imagen" class="card-img-top" *ngIf="datoRopa.iD_ARTICULO == datoArticulo.iD_ARTICULO && datoRopa.color == colorImagen">
+                            </div>
+                            <div class="wsk-cp-text">
+                                <div class="category">
+                                    <span>{{datoArticulo.descripcion}}</span>
+                                </div>
+                                <ul class="list-group list-group-flush ">
+                                    <!-- <li class="list-group-item ">{{datoRopa.talla}}</li> -->
+                                    <li class="list-group-item ">
+                                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="black " style="color: black; " (click)="mostrarImagenColor($event) "></i>
+                                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle mx-1 colores " name="white " style="color: white; " (click)="mostrarImagenColor($event) "></i>
+                                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="blue " style="color: blue " (click)="mostrarImagenColor($event) "></i>
+                                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="green " style="color: green " (click)="mostrarImagenColor($event) "></i>
+                                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="purple " style="color: purple " (click)="mostrarImagenColor($event) "></i>
+                                        <i id="{{datoArticulo.iD_ARTICULO}} " class="bi bi-circle-fill mx-1 colores " name="grey " style="color: grey " (click)="mostrarImagenColor($event) "></i>
 
-                    </li>
-                    <li class="list-group-item ">{{datoArticulo.precio}} €</li>
-                </ul>
-                <div class="card-body ">
-                    <a href="# " class="card-link text-dark ">
-                        <i class="bi bi-heart "></i>
-                    </a>
-                    <a href="# " class="card-link text-dark ">
-                        <i class="bi bi-cart-plus "></i>
-                    </a>
+                                    </li>
+                                </ul>
+                                <div class="card-footer">
+                                    <div class="wcf-left"><span class="price">                    <li class="list-group-item ">{{datoArticulo.precio}} €</li>
+                                    </span></div>
+                                    <div class="wcf-right"><a href="#" class="buy-btn"><i class="bi bi-cart-plus "></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

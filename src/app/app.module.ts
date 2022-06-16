@@ -35,7 +35,7 @@ import { ModalModulePerfil } from './shared/components/modal-perfil/modalPerfil.
 import {ModalAnadirUsuario} from './shared/components/modal-anadir-usuario/modalUsuario.module';
 import {ModalEditarUsuario} from './shared/components/modal-editar-usuario/modalEditar.module';
 import { ModalModulePedido } from './shared/components/modal-anadir-pedido/modalPedido.module';
-
+import {ModalModuleCompra} from './shared/components/modal-compra/modalCompra.module';
 
 //servicios
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -103,6 +103,7 @@ import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
     FormsModule,
     SpinnerModule,
     ModalModulePedido,
+    ModalModuleCompra,
     //angularmaterial
     MatSliderModule,
     MatTableModule,
