@@ -32,5 +32,4 @@ export class ArticulosService {
 
     return this.http.post(`${this.url}/articulos`, body, {headers});
   }
-
 }

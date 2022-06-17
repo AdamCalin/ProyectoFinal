@@ -31,7 +31,10 @@ export class StockService {
     let headers = this.headers();
     return this.http.get(`${this.url}/stock`, {headers});
   }
-  deleteArticulo(){
-      
+  deleteArticulo(id:any){
+    let headers = this.headers();
+    return this.http.delete(`${this.url}/ropa/${id}`, {headers});
   }
+
+
 }

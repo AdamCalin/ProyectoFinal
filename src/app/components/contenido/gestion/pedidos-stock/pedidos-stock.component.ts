@@ -57,11 +57,11 @@ export class PedidosStockComponent implements AfterViewInit {
       
     })
   }
-  confirmBorrarUsuario(id :any){
+  confirmarBorrarArticulo(id :any){
     
     Swal.fire({
       title: 'Advertencia!!',
-      text: "¿Estas seguro de que quieres Borrar ese Usuario?",
+      text: "¿Estas seguro de que quieres Borrar esa Version Articulo?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -69,19 +69,19 @@ export class PedidosStockComponent implements AfterViewInit {
       confirmButtonText: 'Si, estoy seguro!'
     }).then((result) => {
       if (result.isConfirmed) {
-          // this.borrarUsuario(id);
+          this.borrarArticulo(id);
         Swal.fire(
-          'Usuario borrado Correctamente!',
+          'Version Articulo borrado Correctamente!',
         )
       }
     })
   }
-  // borrarUsuario(id : any){    
-  //   this.servicioStock.deleteArticulo(id).subscribe( (res : any) => {
-  //     // console.log(res);
-  //     this.datosVistaStock();
-  //   })
-  // }
+  borrarArticulo(id : any){    
+    this.servicioStock.deleteArticulo(id).subscribe( (res : any) => {
+      console.log(res);
+      this.datosVistaStock();
+    })
+  }
  
   setClose($event: any) {
     this.showModalAdd = false;
@@ -105,8 +105,8 @@ export interface PeriodicElement {
  Articulo: string,
  Color: string,
  Talla: string,
- Cantidad_stock: number,
  Cantidad_pedido: number,
+ Cantidad_stock: number,
  Cantidad_envio: number
 }
 
