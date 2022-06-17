@@ -6,6 +6,8 @@ import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StockService } from 'src/app/services/stock/stock.service';
+import { PedidosArticulosService } from '../../../../services/pedidos_articulos/pedidos_articulos.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -27,7 +29,7 @@ import { StockService } from 'src/app/services/stock/stock.service';
 })
 export class PedidosGestionComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['descripcion', 'talla', 'color', 'cantidad', 'precio', 'edit'];
+  displayedColumns: string[] = ['descripcion', 'talla', 'color', 'cantidad', 'precio_und', 'precio', 'delete'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   //variables from crear nuevo pedidos
@@ -49,15 +51,10 @@ export class PedidosGestionComponent implements AfterViewInit {
 
   
   public mostrar: boolean = true;
-  formAnadirPedido: FormGroup ;
 
 
-   constructor(private formBuilder : FormBuilder, private store: Store<AppState>, private servicioStock: StockService) {
-      this.formAnadirPedido = this.formBuilder.group({
-        descripcion: new FormControl('', Validators.required),
-      talla : new FormControl('', Validators.required),
-      color : new FormControl('', Validators.required)
-    })
+   constructor(private formBuilder : FormBuilder, private store: Store<AppState>, private servicioPedidosArticulos: PedidosArticulosService) {
+
      }
 
     setClose($event: any) {
@@ -65,21 +62,46 @@ export class PedidosGestionComponent implements AfterViewInit {
     }
 
   datosPedidos(){
-    this.servicioStock.getVistaStock().subscribe( (articulos: any) => {
-      console.log(articulos);
-      this.dataSource.data = articulos;
-      
-    })
+   this.servicioPedidosArticulos.damePedidosArticulos().subscribe( (res:any) => {
+    //  console.log(res);
+     this.dataSource.data = res;
+   })
   }
 
-  anadirPedido(){
-    console.log('Añadir Pedido');
-    
-  }
+
   actualizarDatos($event : any){
     if($event == true){
       this.datosPedidos();
     }
+  }
+
+
+
+  
+  confirmarBorrarPedido(id :any){
+    
+    Swal.fire({
+      title: 'Advertencia!!',
+      text: "¿Estas seguro de que quieres Borrar ese Pedido?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, estoy seguro!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+          this.borrarPedido(id);
+        Swal.fire(
+          'Pedido borrado Correctamente!',
+        )
+      }
+    })
+  }
+  borrarPedido(id : any){    
+    this.servicioPedidosArticulos.deletePedido(id).subscribe( (res : any) => {
+      // console.log(res);
+      this.datosPedidos();
+    })
   }
 
   filter(event : any){
@@ -90,9 +112,11 @@ export class PedidosGestionComponent implements AfterViewInit {
 }
 
 export interface PeriodicElement {
-  usuario: string;
-  email: string;
-  perfil: string;
+ descripcion: string,
+ talla: string,
+ color: string, 
+ precio_und: number,
+ precio: number
 }
 
 let  ELEMENT_DATA: PeriodicElement[] = [

@@ -11,16 +11,19 @@
                 <div class="d-flex justify-content-center">
                     <form action="" class="d-flex justify-content-center" [formGroup]="formAnadirPedido">
                         <div class="m-1">
-                            <!-- descripcion -->
                             <div class="form-floating mb-3">
-                                <input class="form-control" type="text" id="descripcion" placeholder="Descripcion" aria-label="default input example" formControlName="descripcion">
-                                <label for="descripcion">Descripcion </label>
+                                <select class="form-select" aria-label="Default select example" formControlName="iD_ARTICULO">
+                                <option value="" selected disabled>--Elige Articulo--</option>
+                                <option [value]="articulo.iD_ARTICULO" *ngFor="let articulo of articulos">{{articulo.descripcion}}</option>
+                                </select>
                             </div>
-
-                            <div class="">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" id="cantidad" placeholder="Cantidad" aria-label="default input example" formControlName="cantidad">
+                                <label for="email">Cantidad </label>
+                            </div>
+                            <div class="form-floating mb-3">
                                 <!-- talla -->
-                                <label for="talla">Talla</label>
-                                <select name="" id="talla" class="form-select form-select-sm my-2" formControlName="talla">
+                                <select name="" id="talla" class="form-select form-select-sm my-2" aria-label="Default select example" formControlName="talla">
                                 <option value="" disabled selected>--Elige Talla--</option>
                                 <option value="S">S</option>
                                 <option value="M">M</option>
@@ -28,10 +31,9 @@
                             </select>
                             </div>
 
-                            <div class="">
+                            <div class="form-floating mb-3">
                                 <!-- color -->
-                                <label for="color">Color</label>
-                                <select name="" id="color" class="form-select form-select-sm my-2" formControlName="color">
+                                <select name="" id="color" class="form-select form-select-sm my-2" aria-label="Default select example" formControlName="color">
                                 <option value="" disabled selected>--Elige Color--</option>
                                 <option value="Negro">Negro</option>
                                 <option value="Blanco">Blanco</option>

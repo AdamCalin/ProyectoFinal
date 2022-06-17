@@ -3,6 +3,7 @@ import { trigger, animate, transition, style, state } from '@angular/animations'
 import Swal from 'sweetalert2';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ArticulosService } from '../../../services/articulos/articulos.service';
+import { PedidosArticulosService } from 'src/app/services/pedidos_articulos/pedidos_articulos.service';
 
 
 @Component({
@@ -27,17 +28,20 @@ export class ModalAnadirPedidoComponent implements OnInit {
   @Input() position: string = 'right'; 
 
   @Output() open = new EventEmitter<boolean>();
+  @Output() datos = new EventEmitter<boolean>();
   
+
   public mostrar: boolean = true;
   formAnadirPedido: FormGroup ;
+  articulos:any;
 
-
-   constructor(private formBuilder : FormBuilder, private articulosService: ArticulosService) {
+   constructor(private formBuilder : FormBuilder, private articulosService: ArticulosService, private pedidosArticulosService:PedidosArticulosService ) {
       this.formAnadirPedido = this.formBuilder.group({
-      descripcion: new FormControl('', Validators.required),
+      iD_ARTICULO: new FormControl('{{this.articulos.iD_ARTICULO}}', Validators.required),
+      descripcion: new FormControl(''),
+      cantidad: new FormControl('', Validators.required),
       talla : new FormControl('', Validators.required),
       color : new FormControl('', Validators.required),
-      cantidad: new FormControl('', Validators.required)
     })
      }
 
@@ -47,41 +51,47 @@ export class ModalAnadirPedidoComponent implements OnInit {
     this.open.emit(value);
   }
   ngOnInit(){
-    
+    this.dameArticulos();
   }
 
 
 
   // formulario añadir articulo
-  anadirPedido(){
-    
-    // console.log(this.formAnadirArticulo.value.imagen);
-    this.articulosService.anadirArticulos(this.formAnadirPedido.value).subscribe( res => {
-      console.log(res);
-      if(res.retCode == 0){
+    dameArticulos(){
+      this.articulosService.getArticulos().subscribe((res:any) => {
+        // console.log(res);
+        this.articulos = res;
+      })
+    }
+
+    anadirPedido(){
+      // console.log(this.formAnadirPedido.value);
+
+      this.pedidosArticulosService.crearPedidoArticulo(this.formAnadirPedido.value).subscribe( (res:any) =>{
+        // console.log(res);
+        if(res.retCode == 0){
+          Swal.fire({
+            icon: 'success',
+            title: 'Añadir Pedido',
+            text: res.mensaje
+          });
+          this.datos.emit(true);
+          this.setClose();
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Añadir Pedido',
+            text: res.mensaje
+          });
+        }
+        // console.log(res);
+      }, (error :any) => {
         Swal.fire({
-          icon: 'success',
-          title: 'Añadir Articulo',
-          text: res.mensaje
+          icon: 'error',
+          title: 'Añadir Pedido',
+          text: error.mensaje
         });
-        this.setClose();
-      }else{
-        Swal.fire({
-          icon: 'success',
-          title: 'Añadir Articulo',
-          text: res.mensaje
-        });
-        this.setClose();
-      }
-      // console.log(res);
-    }, (error :any) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'No se ha podido añadir el Articulo',
-        text: error.mensaje
       });
-      this.setClose();
-    });
-  }
+    } 
   
 }

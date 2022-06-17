@@ -11,8 +11,12 @@ export class SpinnerService {
 
     show() : void{   
         this.isLoading$.next(true);
+        console.log('cargando...');
+        
     }
     hide() : void{
         this.isLoading$.next(false);
+        console.log('cargado');
+        
     }
 }
