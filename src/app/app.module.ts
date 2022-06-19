@@ -57,6 +57,7 @@ import { appReducers, metaReducers} from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { GestionUsuariosComponent } from './components/contenido/gestion/gestion-usuarios/gestion-usuarios.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 //ngx
 
 //spinner
@@ -113,6 +114,7 @@ import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
     MatInputModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    ScrollingModule,
     //redux
     StoreModule.forRoot( appReducers, { metaReducers }),
     StoreDevtoolsModule.instrument({

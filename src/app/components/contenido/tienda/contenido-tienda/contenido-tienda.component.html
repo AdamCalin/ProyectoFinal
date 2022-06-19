@@ -47,9 +47,9 @@
                                     </li>
                                 </ul>
                                 <div class="card-footer">
-                                    <div class="wcf-left"><span class="price">                    <li class="list-group-item ">{{datoArticulo.precio}} €</li>
+                                    <div class="wcf-left"><span class="price"><li class="list-group-item ">{{datoArticulo.precio}} €</li>
                                     </span></div>
-                                    <div class="wcf-right"><a href="#" class="buy-btn"><i class="bi bi-cart-plus "></i></a></div>
+                                    <div class="wcf-right"><a class="buy-btn"><i class="bi bi-cart-plus" id="{{datoArticulo.iD_ARTICULO}} " (click)="anadirCarrito($event)"></i></a></div>
                                 </div>
                             </div>
                         </div>

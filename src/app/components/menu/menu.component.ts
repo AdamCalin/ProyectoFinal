@@ -29,14 +29,20 @@ export class MenuComponent implements OnInit {
    showModal2 :boolean = false;
    fadeOut: boolean = false;
    permisos: any;
-
-
+   contador:any;
   constructor(private store:Store<AppState>) { 
     this.store.select('login').subscribe((state) => {
       // console.log(state.datosUser.iD_PERFIL);
       this.permisos = state.datosUser.iD_PERFIL;
     });
-  
+    this.store.select('carrito').subscribe( (state) =>{
+     
+      this.contador = Object.values(state.contador);
+      if(this.contador > 99){
+        this.contador = +99;
+      }
+
+    })
   }
 
   ngOnInit() {

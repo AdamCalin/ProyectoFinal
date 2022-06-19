@@ -3,6 +3,7 @@ import { trigger, animate, transition, style, state } from '@angular/animations'
 import { LoginService } from 'src/app/services/login/login.service';
 import { Store } from '@ngrx/store';
 import * as LoginActions from '../../shared/components/state/login/login.actions';
+import * as CarritoActions from '../../shared/components/state/carrito/carrito.actions';
 import * as UI from '../../shared/components/state/ui.actions';
 import { AppState } from 'src/app/app.reducer';
 import Swal from 'sweetalert2';
@@ -94,7 +95,7 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('login');
     this.store.dispatch( LoginActions.unSetUser());
     this.store.dispatch( LoginActions.unsetDatosUser());
-    
+    this.store.dispatch( CarritoActions.unSetCarrito());
   }
 
   register($event : any){

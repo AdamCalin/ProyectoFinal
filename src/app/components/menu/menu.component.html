@@ -25,10 +25,9 @@
             </ul>
             <div class="d-flex">
                 <button class="nav-link link-dark position-relative" (click)="showModal = true;"><i class="bi bi-cart2"></i>
-                      <span class="position-absolute top-30 start-95 translate-middle badge rounded-pill bg-danger">
-                        3
-                        <span class="visually-hidden">unread messages</span>
-                    </span>
+                      <span class="position-absolute top-30 start-95 translate-middle badge rounded-pill bg-danger" *ngIf="contador != 0">
+                        {{contador}}
+                        </span>
                 </button>
 
                 <button class="nav-link link-dark" (click)="showModal2 = true;" *ngIf="permisos"><i class="bi bi-person"></i></button>

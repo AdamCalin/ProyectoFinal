@@ -2,19 +2,22 @@ import { ActionReducerMap, ActionReducer, MetaReducer, Action  } from '@ngrx/sto
 import * as UI from './shared/components/state/ui.reducer';
 import * as login from '../app/shared/components/state/login/login.reducer';
 import * as data from '../app/shared/components/state/usuario-gestion/usuario-gestion.reducer';
+import * as carrito from '../app/shared/components/state/carrito/carrito.reducer';
 
 import { localStorageSync, LocalStorageConfig } from "ngrx-store-localstorage";
 
 export interface AppState {
    ui: UI.State,
    login: login.State,
-   data: data.State
+   data: data.State,
+   carrito: carrito.State
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
     ui: UI.uiReducer,
     login: login.loginReducer,
-    data: data.editFormReducer
+    data: data.editFormReducer,
+    carrito: carrito.carritoReducer
 }
 
 export function persitsData(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -22,6 +25,7 @@ export function persitsData(reducer: ActionReducer<any>): ActionReducer<any> {
       keys: [
           {'ui': {}},
           {'login': {}},
+          {'carrito': {}}
       ],
       rehydrate: true,
       removeOnUndefined: true,
