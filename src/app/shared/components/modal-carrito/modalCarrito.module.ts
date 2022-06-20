@@ -8,7 +8,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
   imports: [
     CommonModule,
     ModalModuleCompra,
-    ScrollingModule
+    ScrollingModule,
   ],
   exports : [ ModalCarritoComponent ]
 })

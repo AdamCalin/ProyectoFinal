@@ -10,22 +10,34 @@
 
 .right {
     border-radius: 0.25rem;
-    background-color: #bbbbbb;
+    background-color: rgba(255, 255, 255);
     position: fixed;
     top: 16%;
     right: 0;
-    width: 40%;
-    height: 60%;
+    width: 30%;
+    height: 55%;
     box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .5);
 }
 
 .card {
-    background: transparent;
-    border-left: 1px solid black;
+    background: rgba(238, 238, 238, 0.356);
+    height: 150px;
 }
 
 .card div img {
-    height: 220px;
+    height: 150px;
+}
+
+.card-body {
+    margin-right: 20%;
+}
+
+.containerProducto {
+    display: flex;
+}
+
+.datos {
+    width: 100%;
 }
 
 .containerIncremento input {
@@ -38,21 +50,6 @@
     background: transparent;
 }
 
-.title {
-    font-family: 'Impact', serif;
-    font-size: 36px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 44px;
-    margin: 0 0 12px;
-    text-align: center;
-}
-
-.tamano {
-    height: 75px;
-    width: 75px;
-}
-
 .example-viewport {
     height: 400px;
     width: 100vw;
@@ -60,4 +57,72 @@
 
 .example-item {
     height: 100px;
+}
+
+.quantity {
+    padding-top: 20px;
+    margin-right: 60px;
+}
+
+.quantity input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+}
+
+.botonPedido {
+    width: 200px;
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.total {
+    width: 200px;
+    height: 30px;
+    background: rgb(65, 4, 65);
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    color: white;
+}
+
+.botonPedido:hover {
+    background: rgb(65, 4, 65);
+    color: white;
+}
+
+h5 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media screen and (min-width:320px) and (max-width:425px) {
+    .right {
+        top: 50%;
+        transform: translate(0%, -50%);
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .right {
+        top: 50%;
+        transform: translate(0%, -50%);
+        width: 70%;
+    }
+}
+
+@media screen and (min-width:1024px) and (max-width:1440px) {
+    .right {
+        top: 50%;
+        transform: translate(0%, -50%);
+        width: 50%;
+    }
 }

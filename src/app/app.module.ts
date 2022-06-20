@@ -38,7 +38,7 @@ import { ModalModulePedido } from './shared/components/modal-anadir-pedido/modal
 import {ModalModuleCompra} from './shared/components/modal-compra/modalCompra.module';
 
 //servicios
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 //angular material
@@ -63,6 +63,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 //spinner
 import { SpinnerModule } from './shared/components/spinner/spinner.module';
 import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
+//translate
 
 
 
@@ -115,6 +116,8 @@ import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
     MatProgressSpinnerModule,
     MatSelectModule,
     ScrollingModule,
+    //translate
+   
     //redux
     StoreModule.forRoot( appReducers, { metaReducers }),
     StoreDevtoolsModule.instrument({

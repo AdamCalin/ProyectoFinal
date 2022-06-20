@@ -15,8 +15,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30%;
-    height: 57%;
+    width: 40%;
+    height: 60%;
     box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .5);
 }
 
@@ -50,4 +50,8 @@
 .preview img {
     width: 100%;
     height: 100%;
+}
+
+.botonPagar {
+    margin-left: 50%;
 }

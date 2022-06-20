@@ -23,7 +23,7 @@ export class ArticulosService {
       'Authorization': `Bearer ${this.dataLogin.token}`
      })
   }
-   getArticulos(): Observable<any>{
+   getArticulos(): any{
     return this.http.get(`${this.url}/articulos`); 
   }
 

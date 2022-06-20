@@ -1,0 +1,55 @@
+table {
+    width: 100%;
+}
+
+.containerBuscador {
+    position: relative;
+    left: 48%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.buscador {
+    outline: none;
+    box-sizing: border-box;
+    height: 49px;
+    width: 0;
+    padding: 0 20px;
+    color: black;
+    border-radius: 50px;
+    font-size: 20px;
+    border: 1px solid #643cb4;
+    transition: all .7s ease;
+}
+
+::placeholder {
+    color: grey;
+}
+
+.botonBuscador i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: #643cb4;
+    line-height: 50px;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+    font-size: 150%;
+    color: white;
+}
+
+.containerBuscador:hover input {
+    width: 350px;
+}
+
+.containerBuscador:hover i {
+    transform: rotate(-360deg);
+}
+
+.botonBuscador:hover {
+    background: #643cb4;
+}

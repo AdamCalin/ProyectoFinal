@@ -8,6 +8,6 @@ export const setCarrito = createAction(
 export const unSetCarrito = createAction('[Auth] unSetCarrito');
 export const setContadorCarrito = createAction(
     '[Auth] setContadorCarrito',
-    props<{ contador: any}>()
+    props<{ contador: number}>()
 );
 export const unSetContadorCarrito = createAction('[Auth] unSetContadorCarrito');

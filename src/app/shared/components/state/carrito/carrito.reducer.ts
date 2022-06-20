@@ -5,7 +5,7 @@ import { ICarrito } from '../interfaces/carrito.interface';
 
 export interface State {
     carrito: {},
-    contador: any
+    contador: number
 }
 
 export const initialState: State = {

@@ -6,6 +6,7 @@ import * as carrito from '../app/shared/components/state/carrito/carrito.reducer
 
 import { localStorageSync, LocalStorageConfig } from "ngrx-store-localstorage";
 
+
 export interface AppState {
    ui: UI.State,
    login: login.State,
@@ -13,11 +14,12 @@ export interface AppState {
    carrito: carrito.State
 }
 
+
 export const appReducers: ActionReducerMap<AppState> = {
     ui: UI.uiReducer,
     login: login.loginReducer,
     data: data.editFormReducer,
-    carrito: carrito.carritoReducer
+    carrito: carrito.carritoReducer,
 }
 
 export function persitsData(reducer: ActionReducer<any>): ActionReducer<any> {

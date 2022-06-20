@@ -3,6 +3,7 @@ import { trigger, animate, transition, style } from '@angular/animations';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import * as CarritoActions from '../../../shared/components/state/carrito/carrito.actions';
+import { ArticulosService } from '../../../services/articulos/articulos.service';
 
 @Component({
   selector: 'app-modal-carrito',
@@ -47,24 +48,28 @@ export class ModalCarritoComponent implements OnInit {
   productoId:any;
   contadorProductos:any;
   mensaje:any;
-  constructor(private state : Store<AppState>) { 
+  articuloDescripcion: any[] = [];
+  articuloPrecio: any[] =[];
+  totalPrecio: number = 0;
+  constructor(private state : Store<AppState>, private servicioArticulos: ArticulosService) { 
     this.state.select('login').subscribe( (res:any) => {
       this.permisos = res.datosUser.iD_PERFIL;
       // console.log(this.permisos);
     })
     this.state.select('carrito').subscribe( (res:any) => {     
         this.productos = res.carrito;
-      console.log(this.productos);
+        
       this.data = Object.values(this.productos);
-      this.contadorProductos = Object.keys(this.productos).length;
     
     })
-    this.productos = Array.from({length: 100000}).map((_, i) => `Item #${i}`);
-    console.log(this.contadorProductos);
+
+    // console.log(this.contadorProductos);
     if(this.contadorProductos != 0){
-      this.state.dispatch( CarritoActions.setContadorCarrito({contador: this.contadorProductos}));
-    }
-    this.contadorProductos = Object.keys(this.productos).length;
+      this.contadorProductos = Object.keys(this.productos).length;
+        this.state.dispatch( CarritoActions.setContadorCarrito({contador: this.contadorProductos}));
+      }
+    this.productos = Array.from({length: 1000}).map((_, i) => `Item #${i}`);
+    
   }
  
   setClose() {
@@ -77,6 +82,7 @@ export class ModalCarritoComponent implements OnInit {
     
   }
   ngOnInit() {
+    this.getArticulos();
   }
 
 
@@ -84,6 +90,34 @@ export class ModalCarritoComponent implements OnInit {
     console.log(event.target.id);
     this.productoId = event.target.id;
     this.state.dispatch( CarritoActions.unSetCarrito());
+  }
+  
+
+  getArticulos(){
+    this.servicioArticulos.getArticulos().subscribe((res:any) =>{
+      
+      for(let art of res){
+        for(let articulo of this.data){
+          if(articulo[0].iD_ARTICULO == art.iD_ARTICULO){
+            this.articuloDescripcion.push({id:art.iD_ARTICULO, descripcion:art.descripcion});
+          }
+        }
+      }
+      console.log(this.articuloDescripcion);
+      for(let art of res){
+        for(let articulo of this.data){
+          if(articulo[0].iD_ARTICULO == art.iD_ARTICULO){
+            this.articuloPrecio.push({id:art.iD_ARTICULO, precio:art.precio});
+            
+          }
+        }
+      }
+      for(let i = 0; i<this.articuloPrecio.length; i++){
+        
+        this.totalPrecio += this.articuloPrecio[i].precio;
+      }      
+      
+    })
   }
 
 }

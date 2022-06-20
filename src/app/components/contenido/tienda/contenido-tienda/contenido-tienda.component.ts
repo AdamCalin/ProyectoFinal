@@ -27,8 +27,8 @@ export class ContenidoTiendaComponent implements OnInit {
   carritoRopaColor: any;
   datosCarrito = {iD_ARTICULO: 0, color:""};
   arrayCarrito: Array<any> = [];
-
-  
+  articuloDescripcion: any[] = [];
+  articuloPrecio: any[] =[];
   constructor(private serviceTienda: TiendaService, 
     private serviceArticulo: ArticulosService, 
     private spinerService : SpinnerService, 
@@ -43,16 +43,15 @@ export class ContenidoTiendaComponent implements OnInit {
 
   
   filterHombre(){
+
     let result = this.datosRopa.filter( res => res.sexo == 'H');
     this.datosRopa = result;
     console.log(this.datosRopa);
-    
   }
   filterMujer(){
     let result = this.datosRopa.filter( res => res.sexo == 'M');
     this.datosRopa = result;
     console.log(this.datosRopa);
-    
   }
 
   dameArticulos(){
@@ -78,6 +77,7 @@ export class ContenidoTiendaComponent implements OnInit {
     this.carritoRopaColor = this.colorImagen;
     this.datosCarrito.iD_ARTICULO = this.carritoRopaId;
     this.datosCarrito.color = this.carritoRopaColor;
+    
     this.serviceCarrito.ropaCarrito( this.datosCarrito.color, this.datosCarrito.iD_ARTICULO).subscribe( (res:any) => {
       // console.log(res);
       this.resultRopa = res;
@@ -85,8 +85,24 @@ export class ContenidoTiendaComponent implements OnInit {
       this.arrayCarrito = Object.assign([], this.arrayCarrito);
       this.arrayCarrito.push(this.resultRopa);
       console.log(this.arrayCarrito);
+      // for(let art of res){
+      //   for(let articulo of this.arrayCarrito){
+      //     if(articulo[0].iD_ARTICULO == art.iD_ARTICULO){
+      //       this.arrayCarrito = art.descripcion;
+      //     }
+      //   }
+      // }
+      // console.log(this.articuloDescripcion);
+      // for(let art of res){
+      //   for(let articulo of this.arrayCarrito){
+      //     if(articulo[0].iD_ARTICULO == art.iD_ARTICULO){
+      //       this.arrayCarrito = art.precio ;
+            
+      //     }
+      //   }
+      // }
     this.state.dispatch( CarritoActions.setCarrito({carrito: this.arrayCarrito}));
-    })
+    })  
   }
 
   mostrarImagenColor(event:any){
