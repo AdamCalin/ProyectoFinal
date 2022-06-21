@@ -6,8 +6,9 @@ export const setCarrito = createAction(
     props<{ carrito: any}>()
 );
 export const unSetCarrito = createAction('[Auth] unSetCarrito');
+
 export const setContadorCarrito = createAction(
     '[Auth] setContadorCarrito',
-    props<{ contador: number}>()
+    props<{ contador: any}>()
 );
 export const unSetContadorCarrito = createAction('[Auth] unSetContadorCarrito');

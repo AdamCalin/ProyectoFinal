@@ -5,21 +5,20 @@ import { ICarrito } from '../interfaces/carrito.interface';
 
 export interface State {
     carrito: {},
-    contador: number
+    contador: any
 }
 
 export const initialState: State = {
     carrito: {},
-    contador: 0
+    contador: ""
 }
 
 const _carritoReducer = createReducer(initialState,
       
     on( setCarrito, (state, {carrito}) => ({...state, carrito:{...carrito}})),
     on( unSetCarrito, state => ({...state, carrito:{}})),
-    on( setContadorCarrito, (state, {contador}) => ({...state, contador:0})),
-    on( unSetContadorCarrito, state => ({...state, carrito:{}})),
-    
+    on( setContadorCarrito, (state, {contador}) => ({...state, contador:contador})),
+    on( unSetContadorCarrito, state => ({...state, contador:{}})),
 
 );
 

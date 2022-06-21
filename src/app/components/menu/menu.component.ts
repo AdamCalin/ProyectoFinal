@@ -35,22 +35,21 @@ export class MenuComponent implements OnInit {
       // console.log(state.datosUser.iD_PERFIL);
       this.permisos = state.datosUser.iD_PERFIL;
     });
-    this.store.select('carrito').subscribe( (state) =>{
-     
-      this.contador = Object.values(state.contador);
-      if(this.contador > 99){
-        this.contador = +99;
-      }
-
-    })
+  
   }
 
   ngOnInit() {
-  //  console.log(this.datosUsuario);
-    
-    
+    this.store.select('carrito').subscribe( (state) =>{
+      // console.log(state.contador);
+      
+      this.contador = state.contador;
+      if(this.contador >= 99){
+        this.contador = +99;
+      }
+      // console.log(this.contador);
+      
+    })
   }
-
 
   setClose($event: any) {
     this.showModal = false;

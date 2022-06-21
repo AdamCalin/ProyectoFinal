@@ -3,6 +3,9 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AppState } from 'src/app/app.reducer';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PedidosService } from '../../../services/pedidos/pedidos.service';
+import * as CarritoActions from '../../../shared/components/state/carrito/carrito.actions';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -18,8 +21,14 @@ export class ModalCompraComponent implements OnInit {
   mostrarBoton: boolean = true;
   dataUser: any; 
   formComprar: FormGroup;
-
-  constructor(private store: Store<AppState>, private router:Router, private formBuilder : FormBuilder){ 
+  id:any;
+  usuario:any;
+  JsonPedidos = {
+    usuario:'',
+    codigo:'',
+  }
+  
+  constructor(private store: Store<AppState>, private router:Router, private formBuilder : FormBuilder, private servicioPedido: PedidosService){ 
     this.formComprar = this.formBuilder.group({
       nombre: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
@@ -34,8 +43,10 @@ export class ModalCompraComponent implements OnInit {
     this.store.select('login').subscribe((state) => {
       // console.log(state.datosUser);
       this.dataUser = state.datosUser;
+      this.id = state.datosUser.iD_USUARIO;
+      this.usuario = state.datosUser.usuario;
     }); 
-      
+     
 
   }
  
@@ -45,9 +56,24 @@ export class ModalCompraComponent implements OnInit {
     this.open.emit(value);
   }
   ngOnInit() {
-   
+  
   }
 
-  
+  crearPedido(){
+    this.setClose2();
+   
+    this.JsonPedidos.usuario = this.usuario;
+    if(this.formComprar.invalid){
+      this.servicioPedido.crearPedido(this.JsonPedidos).subscribe( (res:any) => {
+        // console.log(res);
+        Swal.fire({
+          icon: 'success',
+          title: 'Comprar Carrito',
+          text: res.mensaje
+        });
+    }) 
+    }
+     this.store.dispatch( CarritoActions.unSetCarrito());
+  }
 
 }

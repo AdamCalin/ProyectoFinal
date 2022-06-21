@@ -4,6 +4,7 @@
         <div class="d-flex">
             <div class="containerBuscador">
                 <input class="buscador" type="search" placeholder="Buscar" aria-label="Search" (keyup)="filter($event)">
+
                 <div class="botonBuscador">
                     <i class="bi bi-search"></i>
                 </div>
@@ -17,22 +18,22 @@
         <!-- Articulo -->
         <ng-container matColumnDef="Codigo">
             <th mat-header-cell *matHeaderCellDef>Codigo Pedido</th>
-            <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
         </ng-container>
         <!-- Color -->
         <ng-container matColumnDef="Estado">
             <th mat-header-cell *matHeaderCellDef>Estado</th>
-            <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
         </ng-container>
         <!-- Talla -->
         <ng-container matColumnDef="Fecha">
             <th mat-header-cell *matHeaderCellDef>Fecha</th>
-            <td mat-cell *matCellDef="let element"> {{element.talla}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
         </ng-container>
         <!-- Delete Column -->
         <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element"><button mat-raised-button color="warn" (click)="confirmarBorrarPedido(element.iD_ROPA)"><i class="bi bi-trash"></i></button></td>
+            <td mat-cell *matCellDef="let element"><button mat-raised-button color="warn" (click)="confirmarBorrarPedido(element.iD_PEDIDO)"><i class="bi bi-trash"></i></button></td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

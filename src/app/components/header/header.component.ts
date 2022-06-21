@@ -8,6 +8,7 @@ import * as UI from '../../shared/components/state/ui.actions';
 import { AppState } from 'src/app/app.reducer';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -39,7 +40,7 @@ export class HeaderComponent implements OnInit {
   @Output() datos = new EventEmitter<any>();
 
   
-  constructor(public loginService : LoginService, private store: Store<AppState>, private router:Router) {
+  constructor(public loginService : LoginService, private store: Store<AppState>, private router:Router, private translate: TranslateService) {
     this.store.select('login').subscribe(state => {
       this.dataLogin = state; 
     });
@@ -96,6 +97,7 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch( LoginActions.unSetUser());
     this.store.dispatch( LoginActions.unsetDatosUser());
     this.store.dispatch( CarritoActions.unSetCarrito());
+    this.store.dispatch( CarritoActions.unSetContadorCarrito());
   }
 
   register($event : any){

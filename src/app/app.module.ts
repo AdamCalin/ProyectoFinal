@@ -64,8 +64,13 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import { SpinnerModule } from './shared/components/spinner/spinner.module';
 import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
 //translate
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-
+//function httpLoader
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './i18n', './json');
+}
 
 @NgModule({
   declarations: [
@@ -117,7 +122,13 @@ import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
     MatSelectModule,
     ScrollingModule,
     //translate
-   
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     //redux
     StoreModule.forRoot( appReducers, { metaReducers }),
     StoreDevtoolsModule.instrument({

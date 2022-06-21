@@ -10,25 +10,15 @@
     </div>
 </nav>
 <div class="container">
-    <div class="container my-5">
-        <div class="d-flex">
-            <div class="containerBuscador">
-                <input class="buscador" type="search" placeholder="Buscar" aria-label="Search">
-                <div class="botonBuscador">
-                    <i class="bi bi-search"></i>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
         <div class="shell">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3" *ngFor="let datoArticulo of datosArticulo">
-                        <div class="wsk-cp-product">
+                        <div class="wsk-cp-product" *ngIf="spinerService">
                             <div class="wsk-cp-img" *ngFor="let datoRopa of datosRopa; let i = index">
-                                <img [src]="datoArticulo.iD_ARTICULO == idPulsado ? datosRopa[i].imagen : datoRopa.imagen" class="card-img-top" *ngIf="datoRopa.iD_ARTICULO == datoArticulo.iD_ARTICULO && datoRopa.color == colorImagen">
+                                <img [src]="datoArticulo.iD_ARTICULO == idPulsado ? datoRopa.imagen :  datosRopa[i].imagen" class="card-img-top" *ngIf="datoRopa.iD_ARTICULO == datoArticulo.iD_ARTICULO && datoRopa.color == colorImagen">
                             </div>
                             <div class="wsk-cp-text">
                                 <div class="category">

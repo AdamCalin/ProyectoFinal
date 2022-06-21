@@ -29,9 +29,10 @@ export class ContenidoTiendaComponent implements OnInit {
   arrayCarrito: Array<any> = [];
   articuloDescripcion: any[] = [];
   articuloPrecio: any[] =[];
+  totalPrecio:any;
   constructor(private serviceTienda: TiendaService, 
     private serviceArticulo: ArticulosService, 
-    private spinerService : SpinnerService, 
+    public spinerService : SpinnerService, 
     private state : Store<AppState>,
     private serviceCarrito: CarritoService ) { 
 
@@ -43,7 +44,6 @@ export class ContenidoTiendaComponent implements OnInit {
 
   
   filterHombre(){
-
     let result = this.datosRopa.filter( res => res.sexo == 'H');
     this.datosRopa = result;
     console.log(this.datosRopa);
@@ -64,7 +64,8 @@ export class ContenidoTiendaComponent implements OnInit {
   }
 
   vistaArticulos(){
-    this.serviceTienda.getVistaTienda().subscribe( (resRopa:any) =>{
+
+    this.serviceTienda.getVistaTienda().subscribe( (resRopa:any) =>{    
       // console.log(resRopa);
       this.datosRopa = resRopa;
 
@@ -77,30 +78,17 @@ export class ContenidoTiendaComponent implements OnInit {
     this.carritoRopaColor = this.colorImagen;
     this.datosCarrito.iD_ARTICULO = this.carritoRopaId;
     this.datosCarrito.color = this.carritoRopaColor;
+    // console.log(this.datosCarrito.iD_ARTICULO);
+    // console.log(this.datosCarrito.color);
     
-    this.serviceCarrito.ropaCarrito( this.datosCarrito.color, this.datosCarrito.iD_ARTICULO).subscribe( (res:any) => {
+    this.serviceTienda.getVistaTiendaSelect(this.datosCarrito.color,this.datosCarrito.iD_ARTICULO).subscribe( (res:any) => {    
       // console.log(res);
       this.resultRopa = res;
-      console.log(this.resultRopa);
+      // console.log(this.resultRopa);
       this.arrayCarrito = Object.assign([], this.arrayCarrito);
       this.arrayCarrito.push(this.resultRopa);
-      console.log(this.arrayCarrito);
-      // for(let art of res){
-      //   for(let articulo of this.arrayCarrito){
-      //     if(articulo[0].iD_ARTICULO == art.iD_ARTICULO){
-      //       this.arrayCarrito = art.descripcion;
-      //     }
-      //   }
-      // }
-      // console.log(this.articuloDescripcion);
-      // for(let art of res){
-      //   for(let articulo of this.arrayCarrito){
-      //     if(articulo[0].iD_ARTICULO == art.iD_ARTICULO){
-      //       this.arrayCarrito = art.precio ;
-            
-      //     }
-      //   }
-      // }
+      // console.log(this.arrayCarrito);
+       
     this.state.dispatch( CarritoActions.setCarrito({carrito: this.arrayCarrito}));
     })  
   }

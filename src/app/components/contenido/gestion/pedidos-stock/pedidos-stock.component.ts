@@ -27,7 +27,7 @@ import { StockService } from '../../../../services/stock/stock.service';
 })
 export class PedidosStockComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['Articulo', 'Color','Talla','Cantidad_stock', 'Cantidad_pedido', 'Cantidad_envio', 'delete'];
+  displayedColumns: string[] = ['Articulo', 'Color','Talla','Cantidad_stock', 'Cantidad_pedido', 'Cantidad_envio'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   //variables from crear nuevo usuarios

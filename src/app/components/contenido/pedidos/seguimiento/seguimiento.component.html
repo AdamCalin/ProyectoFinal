@@ -1,35 +1,40 @@
 <nav class="d-flex justify-content-evenly my-4">
     <div class="containerBuscador">
-        <input class="buscador" type="search" placeholder="Introduce tu codigo de Pedido..." aria-label="Search">
+        <form action="" [formGroup]="formCodigo">
+            <input class="buscador" type="search" placeholder="Introduce tu codigo de Pedido..." aria-label="Search" formControlName="codigo">
+        </form>
         <div class="botonBuscador">
-            <i class="bi bi-search"></i>
+            <i class="bi bi-search" (click)="getPedidoCodigo()"></i>
         </div>
     </div>
 </nav>
 <div class="container">
-    <div class="card">
+    <div class="alert alert-info alertInfo d-flex justify-content-center align-itmes-center" role="alert" *ngIf="!pedidoCodigo">
+        <i class="bi bi-info-circle"></i>
+        <h1 class="d-flex align-items-center">DEBES BUSCAR CON CODIGO DE PEDIDO PARA VER SU ESTADO</h1>
+        <i class="bi bi-info-circle"></i>
+    </div>
+
+    <div class="card" *ngIf="pedidoCodigo">
         <div class="d-flex justify-content-between px-3 top">
             <div class="d-flex">
-                <h5>ORDER <span class="text-primary font-weight-bold">->Codigo Pedido<-</span></h5>
+                <h5>ORDER <span class="text-primary font-weight-bold">{{pedidoCodigo[0].codigo}}</span></h5>
             </div>
             <div class="d-flex">
-                <h5>Usuario<span class="text-primary font-weight-bold">->Usuario<-</span></h5>
+                <h5>USUARIO <span class="text-primary font-weight-bold">{{pedidoCodigo[0].usuario}}</span></h5>
             </div>
             <div class="d-flex">
-                <h5>Email <span class="text-primary font-weight-bold">->Email<-</span></h5>
-            </div>
-            <div class="d-flex">
-                <h5>Llegada <span class="text-primary font-weight-bold">->Feecha llegada<-</span></h5>
+                <h5>Llegada <span class="text-primary font-weight-bold">{{pedidoCodigo[0].fecha}}</span></h5>
             </div>
         </div>
         <!-- Add class 'active' to progress -->
         <div class="row d-flex justify-content-center">
             <div class="col-12">
                 <ul id="progressbar" class="text-center">
-                    <li class="active step0"></li>
-                    <li class="active step0"></li>
-                    <li class="active step0"></li>
-                    <li class="step0"></li>
+                    <li [ngClass]="{'active':estado == 1 || estado == 2 || estado == 3 || estado == 4}" class=" step0"></li>
+                    <li [ngClass]="{'active':estado == 2 || estado == 3 || estado == 4}" class="step0"></li>
+                    <li [ngClass]="{'active':estado == 3 || estado == 4}" class="step0"></li>
+                    <li [ngClass]="{'active':estado == 4 }" class="step0"></li>
                 </ul>
             </div>
         </div>
@@ -52,7 +57,7 @@
                     <p class="font-weight-bold">Pedido<br>En Reparto</p>
                 </div>
             </div>
-            <div class="d-flex icon-content ¡">
+            <div class="d-flex icon-content">
                 <img class="icon" src="https://i.imgur.com/HdsziHP.png">
                 <div class="d-flex flex-column">
                     <p class="font-weight-bold">Pedido<br>Llego con éxito</p>

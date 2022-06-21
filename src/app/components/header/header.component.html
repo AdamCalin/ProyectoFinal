@@ -11,12 +11,12 @@
                     <i class="bi bi-globe2"></i> Idioma
                 </button>
                 <div class="dropdown-menu capa" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#"> <img class="banderas" src="./assets/images/reino-unido.png" alt=""> Inglés -UK-</a>
-                    <a class="dropdown-item" href="#"> <img class="banderas" src="./assets/images/espana.png" alt=""> Español -ES-</a>
+                    <a class="dropdown-item" value="en"> <img class="banderas" src="./assets/images/reino-unido.png" alt=""> Ingles -UK-</a>
+                    <a class="dropdown-item" value="es"> <img class="banderas" src="./assets/images/espana.png" alt=""> Español -ES-</a>
                 </div>
             </div>
-            <button class="btn btn-outline-light m-1" (click)="showModal = true;" *ngIf="mostrarBoton">Inicio Sesión</button>
-            <button class="btn btn-outline-danger m-1" (click)="logout($event)" *ngIf="!mostrarBoton">Cerrar Sesión</button>
+            <button class="btn btn-outline-light m-1" (click)="showModal = true;" *ngIf="mostrarBoton">Inicio Sesion</button>
+            <button class="btn btn-outline-danger m-1" (click)="logout($event)" *ngIf="!mostrarBoton">Cerrar Sesion</button>
         </div>
 
 

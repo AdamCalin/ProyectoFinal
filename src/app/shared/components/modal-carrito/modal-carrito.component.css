@@ -15,12 +15,12 @@
     top: 16%;
     right: 0;
     width: 30%;
-    height: 55%;
+    height: 60%;
     box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .5);
 }
 
 .card {
-    background: rgba(238, 238, 238, 0.356);
+    background: #eeeeee5b;
     height: 150px;
 }
 

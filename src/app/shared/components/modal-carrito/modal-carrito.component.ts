@@ -48,26 +48,24 @@ export class ModalCarritoComponent implements OnInit {
   productoId:any;
   contadorProductos:any;
   mensaje:any;
-  articuloDescripcion: any[] = [];
-  articuloPrecio: any[] =[];
   totalPrecio: number = 0;
+
   constructor(private state : Store<AppState>, private servicioArticulos: ArticulosService) { 
     this.state.select('login').subscribe( (res:any) => {
       this.permisos = res.datosUser.iD_PERFIL;
       // console.log(this.permisos);
     })
     this.state.select('carrito').subscribe( (res:any) => {     
-        this.productos = res.carrito;
-        
-      this.data = Object.values(this.productos);
-    
-    })
+        this.productos = res.carrito;  
 
+      this.data = Object.values(this.productos);
+    })
     // console.log(this.contadorProductos);
-    if(this.contadorProductos != 0){
-      this.contadorProductos = Object.keys(this.productos).length;
-        this.state.dispatch( CarritoActions.setContadorCarrito({contador: this.contadorProductos}));
-      }
+ 
+    for(let art of this.data){
+       this.totalPrecio += art[0].precio;
+      //  console.log(this.totalPrecio);
+    }
     this.productos = Array.from({length: 1000}).map((_, i) => `Item #${i}`);
     
   }
@@ -82,42 +80,28 @@ export class ModalCarritoComponent implements OnInit {
     
   }
   ngOnInit() {
-    this.getArticulos();
+    if(this.contadorProductos != 0){
+      this.contadorProductos = Object.keys(this.data).length;
+      // console.log(this.contadorProductos);
+        this.state.dispatch( CarritoActions.setContadorCarrito({contador: this.contadorProductos}));
+      }
   }
 
+  actualizarPrecio(){
+    this.state.select('carrito').subscribe( (res:any) => {     
+      this.productos = res.carrito;  
+
+     this.data = Object.values(this.productos);
+     console.log(this.data);
+     
+  })
+  }
 
   borrarProducto(event:any){
-    console.log(event.target.id);
-    this.productoId = event.target.id;
     this.state.dispatch( CarritoActions.unSetCarrito());
+    this.state.dispatch( CarritoActions.unSetContadorCarrito());
   }
   
 
-  getArticulos(){
-    this.servicioArticulos.getArticulos().subscribe((res:any) =>{
-      
-      for(let art of res){
-        for(let articulo of this.data){
-          if(articulo[0].iD_ARTICULO == art.iD_ARTICULO){
-            this.articuloDescripcion.push({id:art.iD_ARTICULO, descripcion:art.descripcion});
-          }
-        }
-      }
-      console.log(this.articuloDescripcion);
-      for(let art of res){
-        for(let articulo of this.data){
-          if(articulo[0].iD_ARTICULO == art.iD_ARTICULO){
-            this.articuloPrecio.push({id:art.iD_ARTICULO, precio:art.precio});
-            
-          }
-        }
-      }
-      for(let i = 0; i<this.articuloPrecio.length; i++){
-        
-        this.totalPrecio += this.articuloPrecio[i].precio;
-      }      
-      
-    })
-  }
 
 }
